@@ -73,6 +73,7 @@ export type PokemonDataType = {
  */
 export type ConvertPokemonDataType = {
   id: number;
+  names: PokemonSpecies;
   sprites: SpritesType;
   stats: StatsType;
   types: Types;
@@ -85,4 +86,18 @@ export type GetPokemonDataType = {
   id: RequestId;
   message: ResponseMessage;
   pokemonData: ConvertPokemonDataType;
+};
+
+export type GetPokemonDataUnionSpeciesType = {
+  id: RequestId;
+  message: ResponseMessage;
+  pokemonData: ConvertPokemonUnionSpeciesType;
+};
+
+export type ConvertPokemonUnionSpeciesType = {
+  id: number;
+  name: string;
+  sprites: SpritesType;
+  stats: StatsType;
+  types: Types;
 };

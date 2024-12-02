@@ -6,10 +6,15 @@ import { convertTypeWord } from "./lib/convert/types";
 export default async function Home() {
   const getPokemonData = await fetchPokemonData();
   const { pokemonData } = getPokemonData;
+  console.log(pokemonData);
+
+  // const data = await fetchAllPokemonData();
+  // console.log(data);
 
   return (
     <div>
       <p>{pokemonData.id}</p>
+      <p>{pokemonData.name}</p>
       {pokemonData.types.map((type) => (
         <p key={type.type.name}>{convertTypeWord(type.type)}</p>
       ))}
