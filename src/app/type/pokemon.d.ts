@@ -94,6 +94,11 @@ export type GetPokemonDataUnionSpeciesType = {
   pokemonData: ConvertPokemonUnionSpeciesType;
 };
 
+export type GetPokemonDataUnionSpeciesListType = {
+  message: ResponseMessage;
+  pokemonData: Array<ConvertPokemonUnionSpeciesType>;
+};
+
 export type ConvertPokemonUnionSpeciesType = {
   id: number;
   name: string;
