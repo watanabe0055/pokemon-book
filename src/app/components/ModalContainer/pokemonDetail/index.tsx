@@ -1,15 +1,16 @@
-// import Image from "next/image";
-// import { fetchPokemonData } from "./lib/fetch";
-// import { convertStatsWord } from "./lib/convert/stats";
-// import { convertTypeWord } from "./lib/convert/types";
+import { convertStatsWord } from "@/app/lib/convert/stats";
+import { convertTypeWord } from "@/app/lib/convert/types";
+import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import Image from "next/image";
 
-export default function Home() {
-  // const data = await fetchAllPokemonData();
-  // console.log(data);
+type pokemonDetailType = {
+  pokemonData: ConvertPokemonUnionSpeciesType;
+};
 
+const PokemonDetail = ({ pokemonData }: pokemonDetailType) => {
   return (
-    <div>
-      {/* <p>{pokemonData.id}</p>
+    <>
+      <p>{pokemonData.id}</p>
       <p>{pokemonData.name}</p>
       {pokemonData.types.map((type) => (
         <p key={type.type.name}>{convertTypeWord(type.type)}</p>
@@ -26,7 +27,9 @@ export default function Home() {
           width={100}
           height={100}
         />
-      )} */}
-    </div>
+      )}
+    </>
   );
-}
+};
+
+export default PokemonDetail;

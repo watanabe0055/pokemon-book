@@ -32,7 +32,6 @@ export const fetchAllPokemonData =
     const path = "http://localhost:8787/v1/pokemon";
     const getData = await fetch(path);
     const data: GetPokemonDataUnionSpeciesListType = await getData.json();
-    console.log(data.pokemonData);
 
     // pokemonData配列内の各要素に対して処理を行い、namesを変換
     const updatedPokemonData = data.pokemonData.map((pokemon) => ({
