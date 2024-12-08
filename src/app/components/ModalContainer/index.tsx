@@ -24,12 +24,12 @@ const ModalContainer = ({
           "flex",
           "items-center",
           "justify-center",
-          "bg-black/30"
+          "bg-black/50"
         )}
       >
         <div
           className={clsx(
-            "bg-white/35",
+            "bg-white/60",
             "rounded-lg",
             "shadow-md",
             "shadow-black/10",
