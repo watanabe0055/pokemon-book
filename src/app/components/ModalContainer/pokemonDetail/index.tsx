@@ -23,7 +23,7 @@ const PokemonDetail = ({ pokemonData }: pokemonDetailType) => {
       {pokemonData.sprites.back_default && (
         <Image
           src={pokemonData.sprites.other.official_artwork.front_default}
-          alt={pokemonData.sprites.back_default}
+          alt={`${pokemonData.sprites.back_default}の画像`}
           width={100}
           height={100}
         />

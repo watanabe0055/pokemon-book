@@ -4,7 +4,7 @@ import {
   GetPokemonDataUnionSpeciesListType,
   GetPokemonDataUnionSpeciesType,
 } from "../type/pokemon";
-import { SpeciesListType } from "../type/pokemonSpecoes";
+import { SpeciesListType } from "../type/pokemonSpecies";
 
 /**
  * ポケモンの個体単位でのデータをゲットする

@@ -4,5 +4,9 @@ import { fetchAllPokemonData } from "./lib/fetch";
 export default async function Home() {
   const pokemonData = await fetchAllPokemonData();
 
-  return <PokemonIndex pokemonData={pokemonData.pokemonData} />;
+  return (
+    <main>
+      <PokemonIndex pokemonData={pokemonData.pokemonData} />
+    </main>
+  );
 }

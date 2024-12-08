@@ -50,7 +50,7 @@ const PokemonIndex = ({ pokemonData }: pokemonDetailType) => {
           >
             <Image
               src={pokemon.sprites.other.official_artwork.front_default}
-              alt={pokemon.name}
+              alt={`${pokemon.name}の画像`}
               width={100}
               height={100}
             />

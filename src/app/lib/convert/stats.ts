@@ -16,6 +16,6 @@ export const convertStatsWord = (stats: Stat) => {
       return "素早さ";
 
     default:
-      break;
+      return "不明なステータス";
   }
 };
