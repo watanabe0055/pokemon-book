@@ -1,4 +1,5 @@
 import {
+  GetPokemonDataListType,
   GetPokemonDataType,
   GetPokemonDataUnionSpeciesListType,
   GetPokemonDataUnionSpeciesType,
@@ -31,7 +32,7 @@ export const fetchAllPokemonData =
   async (): Promise<GetPokemonDataUnionSpeciesListType> => {
     const path = "http://localhost:8787/v1/pokemon";
     const getData = await fetch(path);
-    const data: GetPokemonDataUnionSpeciesListType = await getData.json();
+    const data: GetPokemonDataListType = await getData.json();
 
     // pokemonData配列内の各要素に対して処理を行い、namesを変換
     const updatedPokemonData = data.pokemonData.map((pokemon) => ({

@@ -88,17 +88,29 @@ export type GetPokemonDataType = {
   pokemonData: ConvertPokemonDataType;
 };
 
+export type GetPokemonDataListType = {
+  id: RequestId;
+  message: ResponseMessage;
+  pokemonData: Array<ConvertPokemonDataType>;
+};
+
 export type GetPokemonDataUnionSpeciesType = {
   id: RequestId;
   message: ResponseMessage;
   pokemonData: ConvertPokemonUnionSpeciesType;
 };
 
+/**
+ * ポケモン一覧を取得した型定義
+ */
 export type GetPokemonDataUnionSpeciesListType = {
   message: ResponseMessage;
   pokemonData: Array<ConvertPokemonUnionSpeciesType>;
 };
 
+/**
+ * ポケモンの名前を取得して、日本語名だけ追加した型定義（フロントエンドでコンバートしたもの）
+ */
 export type ConvertPokemonUnionSpeciesType = {
   id: number;
   name: string;
