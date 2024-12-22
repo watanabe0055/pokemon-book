@@ -1,4 +1,4 @@
-import { TypeDetail } from "@/app/type/pokemon";
+import { TypeName } from "@/app/type/pokemon";
 
 const TYPE_MAPPING: Record<string, string> = {
   normal: "ノーマル",
@@ -23,9 +23,9 @@ const TYPE_MAPPING: Record<string, string> = {
   unknown: "不明",
 };
 
-export const convertTypeWord = (type: TypeDetail): string => {
-  if (!type?.name) {
+export const convertTypeWord = (type: TypeName): string => {
+  if (!type) {
     throw new Error("タイプ名が指定されていません");
   }
-  return TYPE_MAPPING[type.name] ?? "不明なタイプ";
+  return TYPE_MAPPING[type] ?? "不明なタイプ";
 };

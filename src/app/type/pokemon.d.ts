@@ -38,9 +38,31 @@ export interface Stat {
 // 定義: stats配列全体型
 export type StatsType = Stat[];
 
+type TypeName =
+  | "normal"
+  | "fighting"
+  | "flying"
+  | "poison"
+  | "ground"
+  | "rock"
+  | "bug"
+  | "ghost"
+  | "steel"
+  | "fire"
+  | "water"
+  | "grass"
+  | "electric"
+  | "psychic"
+  | "ice"
+  | "dragon"
+  | "dark"
+  | "fairy"
+  | "stellar"
+  | "unknown";
+
 // 定義: 各typeの詳細型
 interface TypeDetail {
-  name: string;
+  name: TypeName;
   url: string;
 }
 
