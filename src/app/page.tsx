@@ -1,8 +1,14 @@
-import PokemonIndex from "./components/pokemonIndex";
-import { fetchAllPokemonData } from "./lib/fetch";
+"use client";
 
-export default async function Home() {
-  const pokemonData = await fetchAllPokemonData();
+import { useModel } from "./useModel";
+import PokemonIndex from "./components/pokemonIndex";
+
+export default function Home() {
+  const { pokemonData } = useModel();
+
+  if (!pokemonData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main>
