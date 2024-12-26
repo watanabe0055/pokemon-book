@@ -25,30 +25,26 @@ export const fetchPokemonData =
     };
   };
 
-type fetchAllPokemonDataProps = {
-  offset?: number;
-};
 /**
  * ポケモンの個体単位でのデータをゲットする
  */
-export const fetchAllPokemonData = async ({
-  offset = 1,
-}: fetchAllPokemonDataProps): Promise<GetPokemonDataUnionSpeciesListType> => {
-  const path = `http://localhost:8787/v1/pokemon?offset=${offset}`;
-  const getData = await fetch(path);
-  const data: GetPokemonDataListType = await getData.json();
+export const fetchAllPokemonData =
+  async (): Promise<GetPokemonDataUnionSpeciesListType> => {
+    const path = "http://localhost:8787/v1/pokemon";
+    const getData = await fetch(path);
+    const data: GetPokemonDataListType = await getData.json();
 
-  // pokemonData配列内の各要素に対して処理を行い、namesを変換
-  const updatedPokemonData = data.pokemonData.map((pokemon) => ({
-    ...pokemon,
-    name: convertPokemonNameJa(pokemon.names), // namesを変換
-  }));
+    // pokemonData配列内の各要素に対して処理を行い、namesを変換
+    const updatedPokemonData = data.pokemonData.map((pokemon) => ({
+      ...pokemon,
+      name: convertPokemonNameJa(pokemon.names), // namesを変換
+    }));
 
-  return {
-    message: data.message,
-    pokemonData: updatedPokemonData,
+    return {
+      message: data.message,
+      pokemonData: updatedPokemonData,
+    };
   };
-};
 
 export const convertPokemonNameJa = (names: SpeciesListType): string => {
   // 日本語名を持つ最初の要素を検索

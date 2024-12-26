@@ -1,24 +1,8 @@
-"use client";
-
-import { useModel } from "./useModel";
 import PokemonIndex from "./components/pokemonIndex";
-import useScrollDetection from "./lib/scroll";
-import { useEffect } from "react";
+import { fetchAllPokemonData } from "./lib/fetch";
 
-export default function Home() {
-  const { pokemonData, loaderGetPokemon } = useModel(); // 追加ロード用関数を仮定
-  const isBottom = useScrollDetection();
-
-  useEffect(() => {
-    if (isBottom) {
-      // loadMorePokemon(); // 最下部に到達したら新しいポケモンデータをロード
-      loaderGetPokemon();
-    }
-  }, [isBottom]);
-
-  if (!pokemonData) {
-    return <div>Loading...</div>;
-  }
+export default async function Home() {
+  const pokemonData = await fetchAllPokemonData();
 
   return (
     <main>
