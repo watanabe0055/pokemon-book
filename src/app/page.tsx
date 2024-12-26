@@ -11,10 +11,9 @@ export default function Home() {
 
   useEffect(() => {
     if (isBottom) {
-      // loadMorePokemon(); // 最下部に到達したら新しいポケモンデータをロード
       loaderGetPokemon();
     }
-  }, [isBottom]);
+  }, [isBottom, loaderGetPokemon]);
 
   if (!pokemonData) {
     return <div>Loading...</div>;
