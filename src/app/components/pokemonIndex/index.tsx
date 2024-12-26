@@ -24,8 +24,8 @@ const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
         handleModelClose={handleModelClose}
         pokemonData={modelContent}
       />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8">Pokédex</h1>
+      <div className="container px-4 py-8 mx-auto">
+        <h1 className="mb-8 text-4xl font-bold text-center">Pokédex</h1>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {pokemonData.map((pokemon) => (
             <div
@@ -46,12 +46,13 @@ const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
                 <Image
                   src={pokemon.sprites.other.official_artwork.front_default}
                   alt={`${pokemon.name}の画像`}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority
                   className="transition-transform duration-300 hover:scale-110"
                 />
               </div>
-              <p className="text-sm text-gray-500 mb-1">
+              <p className="mb-1 text-sm text-gray-500">
                 No. {pokemon.id.toString().padStart(4, "0")}
               </p>
               <p className="text-lg font-semibold text-gray-800 capitalize">
