@@ -13,7 +13,7 @@ export default function Home() {
     if (isBottom) {
       loaderGetPokemon();
     }
-  }, [isBottom, loaderGetPokemon]);
+  }, [isBottom]);
 
   if (!pokemonData) {
     return <div>Loading...</div>;
