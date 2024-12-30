@@ -9,13 +9,17 @@ import clsx from "clsx";
 import TypeList from "../atoms/typeList";
 
 type PokemonIndexProps = {
-  pokemonData: Array<ConvertPokemonUnionSpeciesType>;
+  pokemonData?: Array<ConvertPokemonUnionSpeciesType>;
 };
 
 const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
   const { isOpen, modelContent, handleModelOpen, handleModelClose } =
     useModel();
   const [hoveredPokemon, setHoveredPokemon] = useState<number | null>(null);
+
+  if (!pokemonData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>

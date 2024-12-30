@@ -3,7 +3,11 @@
 import { useModel } from "./useModel";
 import PokemonIndex from "./components/pokemonIndex";
 import useScrollDetection from "./lib/scroll";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+
+function Loader() {
+  return <div className="py-4 text-center">Loading more Pokémon...</div>;
+}
 
 export default function Home() {
   const { pokemonData, loaderGetPokemon } = useModel();
@@ -15,13 +19,10 @@ export default function Home() {
     }
   }, [isBottom]);
 
-  if (!pokemonData) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <main>
-      <PokemonIndex pokemonData={pokemonData.pokemonData} />
+      <PokemonIndex pokemonData={pokemonData?.pokemonData} />
+      <Suspense fallback={<Loader />}>{isBottom && <Loader />}</Suspense>
     </main>
   );
 }
