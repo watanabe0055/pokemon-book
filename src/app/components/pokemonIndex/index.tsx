@@ -29,7 +29,7 @@ const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
         pokemonData={modelContent}
       />
       <div className="container px-4 py-8 mx-auto">
-        <h1 className="mb-8 text-4xl font-bold text-center">Pokédex</h1>
+        <h1 className="mb-8 text-4xl font-bold text-center">Poke図鑑</h1>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {pokemonData.map((pokemon) => (
             <div
