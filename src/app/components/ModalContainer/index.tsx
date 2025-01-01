@@ -3,7 +3,7 @@ import { XCircle } from "lucide-react";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonDetail from "./pokemonDetail";
 
-type ModalContainerProps = {
+export type ModalContainerProps = {
   isOpen: boolean;
   handleModelClose: () => void;
   pokemonData?: ConvertPokemonUnionSpeciesType;
