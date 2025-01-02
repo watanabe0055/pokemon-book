@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useEffect, useState, useCallback } from "react";
-import { fetchAllPokemonData } from "./lib/fetch";
-import { allGetPokemonAtom } from "./jotai/pokemon/get";
+import { fetchAllPokemonData } from "../../lib/fetch";
+import { allGetPokemonAtom } from "../../jotai/pokemon/get";
 
 export const useModel = () => {
   const [offset, setOffset] = useState(1);
