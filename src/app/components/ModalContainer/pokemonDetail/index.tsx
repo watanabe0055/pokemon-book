@@ -10,9 +10,9 @@ type PokemonDetailProps = {
 
 const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col gap-6 md:flex-row">
       <div className="flex-1">
-        <div className="bg-gray-100 rounded-lg p-4 text-center">
+        <div className="p-4 text-center bg-gray-100 rounded-lg">
           <Image
             src={pokemonData.sprites.other.official_artwork.front_default}
             alt={`${pokemonData.name}の画像`}
@@ -25,7 +25,7 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
           <p className="text-sm text-gray-500">
             No. {pokemonData.id.toString().padStart(4, "0")}
           </p>
-          <h2 className="text-2xl font-bold mt-2">{pokemonData.name}</h2>
+          <h2 className="mt-2 text-2xl font-bold">{pokemonData.name}</h2>
         </div>
       </div>
       <div className="flex-1">
@@ -36,7 +36,7 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
               <span className="w-1/3 text-sm font-medium text-gray-500">
                 {convertStatsWord(stat)}:
               </span>
-              <div className="w-2/3 h-4 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-2/3 h-4 overflow-hidden bg-gray-200 rounded-full">
                 <div
                   className="h-full bg-blue-500"
                   style={{ width: `${(stat.base_stat / 255) * 100}%` }}
