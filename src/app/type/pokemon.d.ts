@@ -38,7 +38,7 @@ export interface Stat {
 // 定義: stats配列全体型
 export type StatsType = Stat[];
 
-type TypeName =
+export type TypeName =
   | "normal"
   | "fighting"
   | "flying"
