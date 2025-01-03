@@ -1,5 +1,6 @@
 import { ResultsType } from "@/app/type/type";
 import TypeText from "../atoms/typeList/typeText";
+import FlyingSVG from "./type/flying";
 
 type pokemonTypesProps = {
   typeList: ResultsType[];
