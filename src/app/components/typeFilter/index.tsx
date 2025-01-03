@@ -1,6 +1,6 @@
 import { ResultsType } from "@/app/type/type";
 import TypeText from "../atoms/typeList/typeText";
-import FlyingSVG from "./type/flying";
+import TypeIconList from "./TypeIconList";
 
 type pokemonTypesProps = {
   typeList: ResultsType[];
@@ -18,6 +18,7 @@ const TypeFilter = ({ typeList }: pokemonTypesProps) => {
             value={type.name}
           />
           <label key={type.name} htmlFor={type.name}>
+            <TypeIconList typeName={type.name} />
             <TypeText type={type.name} />
           </label>
         </div>
