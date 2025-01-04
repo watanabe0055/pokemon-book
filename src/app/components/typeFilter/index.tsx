@@ -1,15 +1,17 @@
 import { ResultsType } from "@/app/type/type";
 import TypeText from "../atoms/typeList/typeText";
 import TypeIconList from "./TypeIconList";
+import useModel from "./useModel";
 
 type pokemonTypesProps = {
   typeList: ResultsType[];
 };
 const TypeFilter = ({ typeList }: pokemonTypesProps) => {
-  console.log(typeList);
+  const { omitTheTypeWithNoIcons } = useModel({ typeList });
+
   return (
     <>
-      {typeList.map((type) => (
+      {omitTheTypeWithNoIcons.map((type) => (
         <div key={type.name}>
           <input
             type="checkbox"

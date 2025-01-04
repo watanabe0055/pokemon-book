@@ -61,10 +61,6 @@ const TypeIconList = ({ typeName }: TypeIconListProps) => {
       return <RockSVG />;
     case "steel":
       return <SteelSVG />;
-    // case "stellar":
-    //   return <StellarSVG />;
-    // case "unknown":
-    //   return <UnknownSVG />;
     case "water":
       return <WaterSVG />;
 
