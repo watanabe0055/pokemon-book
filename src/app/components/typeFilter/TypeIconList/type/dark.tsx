@@ -1,8 +1,10 @@
-const DarkSVG: React.FC = () => {
+import { SvgProps } from "./bug";
+
+const DarkSVG: React.FC<SvgProps> = ({ size }) => {
   return (
     <svg
-      width="50"
-      height="50"
+      width={size}
+      height={size}
       viewBox="0 0 512 512"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

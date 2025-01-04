@@ -26,43 +26,44 @@ type TypeIconListProps = {
  * アイコンを表示する
  */
 const TypeIconList = ({ typeName }: TypeIconListProps) => {
+  const iconSize = 40;
   switch (typeName) {
     case "bug":
-      return <BugSVG />;
+      return <BugSVG size={iconSize} />;
     case "dark":
-      return <DarkSVG />;
+      return <DarkSVG size={iconSize} />;
     case "dragon":
-      return <DragonSVG />;
+      return <DragonSVG size={iconSize} />;
     case "electric":
-      return <ElectricSVG />;
+      return <ElectricSVG size={iconSize} />;
     case "fairy":
-      return <FairySVG />;
+      return <FairySVG size={iconSize} />;
     case "fighting":
-      return <FightingSVG />;
+      return <FightingSVG size={iconSize} />;
     case "fire":
-      return <FireSVG />;
+      return <FireSVG size={iconSize} />;
     case "flying":
-      return <FlyingSVG />;
+      return <FlyingSVG size={iconSize} />;
     case "ghost":
-      return <GhostSVG />;
+      return <GhostSVG size={iconSize} />;
     case "grass":
-      return <GrassSVG />;
+      return <GrassSVG size={iconSize} />;
     case "ground":
-      return <GroundSVG />;
+      return <GroundSVG size={iconSize} />;
     case "ice":
-      return <IceSVG />;
+      return <IceSVG size={iconSize} />;
     case "normal":
-      return <NormalSVG />;
+      return <NormalSVG size={iconSize} />;
     case "poison":
-      return <PoisonSVG />;
+      return <PoisonSVG size={iconSize} />;
     case "psychic":
-      return <PsychicSVG />;
+      return <PsychicSVG size={iconSize} />;
     case "rock":
-      return <RockSVG />;
+      return <RockSVG size={iconSize} />;
     case "steel":
-      return <SteelSVG />;
+      return <SteelSVG size={iconSize} />;
     case "water":
-      return <WaterSVG />;
+      return <WaterSVG size={iconSize} />;
 
     default:
       return null; // または別のデフォルトアイコンを返す
