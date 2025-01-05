@@ -2,8 +2,13 @@ import { useAtom } from "jotai";
 import { useEffect, useState, useCallback } from "react";
 import { fetchAllPokemonData } from "../../lib/fetch";
 import { allGetPokemonAtom } from "../../jotai/pokemon/get";
+import { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
 
-export const useModel = () => {
+type UseModelProps = {
+  InitialPokemonData: GetPokemonDataUnionSpeciesListType;
+};
+
+export const useModel = ({ InitialPokemonData }: UseModelProps) => {
   const [offset, setOffset] = useState(1);
   const [pokemonData, setPokemonData] = useAtom(allGetPokemonAtom);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +35,9 @@ export const useModel = () => {
     [setPokemonData]
   );
 
+  //最初の50件だけはseverサイドで取得してるので、ここでセット
   useEffect(() => {
-    fetchPokemonData(offset);
+    setPokemonData(InitialPokemonData);
   }, []);
 
   const loaderGetPokemon = async () => {
