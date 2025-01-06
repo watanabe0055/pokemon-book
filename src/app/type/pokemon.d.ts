@@ -119,7 +119,7 @@ export type GetPokemonDataListType = {
 export type GetPokemonDataUnionSpeciesType = {
   id: RequestId;
   message: ResponseMessage;
-  pokemonData: ConvertPokemonUnionSpeciesType;
+  pokemonData?: ConvertPokemonUnionSpeciesType;
 };
 
 /**

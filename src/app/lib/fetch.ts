@@ -7,14 +7,42 @@ import {
 import { SpeciesListType } from "../type/pokemonSpecies";
 import { GetPokemonDataTypeListUnionType } from "../type/type";
 
+type fetchPokemonDataProps = {
+  id: string;
+};
+
 /**
  * ポケモンの個体単位でのデータをゲットする
  */
-export const fetchPokemonData =
-  async (): Promise<GetPokemonDataUnionSpeciesType> => {
-    const path = "http://localhost:8787/v1/pokemon/1";
+export const fetchPokemonData = async ({
+  id,
+}: fetchPokemonDataProps): Promise<GetPokemonDataUnionSpeciesType> => {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
+  const path = `${baseUrl}v1/pokemon/${id}`; // パス修正 ("/"を追加)
+
+  try {
     const getData = await fetch(path);
+
+    // HTTPエラーのチェック
+    if (!getData.ok) {
+      return {
+        id,
+        message: "Failed to fetch data",
+        pokemonData: undefined,
+      };
+    }
+
     const data: GetPokemonDataType = await getData.json();
+
+    // 必須データの存在チェック
+    if (!data?.pokemonData) {
+      return {
+        id: data?.id || id,
+        message: data?.message,
+        pokemonData: undefined,
+      };
+    }
 
     return {
       id: data.id,
@@ -24,7 +52,15 @@ export const fetchPokemonData =
         name: convertPokemonNameJa(data.pokemonData.names),
       },
     };
-  };
+  } catch (error) {
+    console.error("ポケモンデータの取得中にエラーが発生しました:", error);
+    return {
+      id,
+      message: "An unexpected error occurred",
+      pokemonData: undefined,
+    };
+  }
+};
 
 type fetchAllPokemonDataProps = {
   offset?: number;

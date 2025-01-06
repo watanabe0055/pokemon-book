@@ -4,4 +4,4 @@ import { atom } from "jotai";
 
 export const allGetPokemonAtom = atom<GetPokemonDataUnionSpeciesListType>();
 
-export const typeListPokemonAtom = atom<typePokemonList>();
+export const typeListPokemonAtom = atom<Array<typePokemonList>>();

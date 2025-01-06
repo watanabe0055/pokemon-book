@@ -1,5 +1,5 @@
 import { typeListPokemonAtom } from "@/app/jotai/pokemon/get";
-import { fetchPokemonDataByType } from "@/app/lib/fetch";
+import { fetchPokemonData, fetchPokemonDataByType } from "@/app/lib/fetch";
 import { ResultsType } from "@/app/type/type";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
@@ -40,6 +40,20 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
 
     fetchData();
   }, [selectedTypes[0]]);
+
+  useEffect(() => {
+    if (!typeListPokemon) {
+      return;
+    }
+
+    typeListPokemon.map((pokemon) => {
+      Promise.all([fetchPokemonData({ id: pokemon.pokemon.name })]).then(
+        (res) => {
+          // console.log(res);
+        }
+      );
+    });
+  }, [typeListPokemon]);
 
   return { omitTheTypeWithNoIcons, selectedTypes, handleTypeChange };
 };
