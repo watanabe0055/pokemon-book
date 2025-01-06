@@ -1,7 +1,8 @@
 import { GetTypeListResponse } from "@/app/type/type";
 
 export async function fetchPokemonTypes() {
-  const res = await fetch("https://pokeapi.co/api/v2/type");
+  const url = process.env.POKEMON_API_PUBLIC + "/type";
+  const res = await fetch(url);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

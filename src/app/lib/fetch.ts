@@ -5,6 +5,7 @@ import {
   GetPokemonDataUnionSpeciesType,
 } from "../type/pokemon";
 import { SpeciesListType } from "../type/pokemonSpecies";
+import { GetPokemonDataTypeListUnionType } from "../type/type";
 
 /**
  * ポケモンの個体単位でのデータをゲットする
@@ -48,6 +49,21 @@ export const fetchAllPokemonData = async ({
     message: data.message,
     pokemonData: updatedPokemonData,
   };
+};
+
+/**
+ * hono version
+ * typeに合致するポケモンのデータをゲットする
+ */
+
+export const fetchPokemonDataByType = async ({ type }: { type: string }) => {
+  const path = `http://localhost:8787/v1/pokemon-type/${type}`;
+
+  const getPokemonTypeList = await fetch(path);
+  const data =
+    (await getPokemonTypeList.json()) as GetPokemonDataTypeListUnionType;
+
+  return data;
 };
 
 export const convertPokemonNameJa = (names: SpeciesListType): string => {
