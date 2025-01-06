@@ -5,6 +5,7 @@ import {
   GetPokemonDataUnionSpeciesType,
 } from "../type/pokemon";
 import { SpeciesListType } from "../type/pokemonSpecies";
+import { GetPokemonDataTypeListUnionType } from "../type/type";
 
 /**
  * ポケモンの個体単位でのデータをゲットする
@@ -34,7 +35,10 @@ type fetchAllPokemonDataProps = {
 export const fetchAllPokemonData = async ({
   offset = 1,
 }: fetchAllPokemonDataProps): Promise<GetPokemonDataUnionSpeciesListType> => {
-  const path = `http://localhost:8787/v1/pokemon?offset=${offset}`;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
+  const path = `${baseUrl}v1/pokemon?offset=${offset}`;
+
   const getData = await fetch(path);
   const data: GetPokemonDataListType = await getData.json();
 
@@ -48,6 +52,30 @@ export const fetchAllPokemonData = async ({
     message: data.message,
     pokemonData: updatedPokemonData,
   };
+};
+
+/**
+ * hono version
+ * typeに合致するポケモンのデータをゲットする
+ */
+
+export const fetchPokemonDataByType = async ({ type }: { type: string }) => {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
+
+  const path = `${baseUrl}v1/pokemon-type/${type}`;
+
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    const data = (await response.json()) as GetPokemonDataTypeListUnionType;
+    return data;
+  } catch (error) {
+    console.error("ポケモンデータの取得に失敗しました:", error);
+    throw error;
+  }
 };
 
 export const convertPokemonNameJa = (names: SpeciesListType): string => {

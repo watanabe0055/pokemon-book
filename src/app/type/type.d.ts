@@ -44,3 +44,26 @@ export type GetTypeListResponse = {
   previous: string | null;
   results: Array<ResultsType>;
 };
+
+/**
+ * ポケモンをタイプをキーにしとくした時
+ */
+export type typePokemonList = {
+  pokemon: [
+    pokemon: {
+      pokemon: {
+        name: string;
+        url: string;
+      };
+      slot: number;
+    }
+  ];
+};
+
+/**
+ * タイプをキーにしたポケモンのデータを取得する時の型
+ */
+export type GetPokemonDataTypeListUnionType = {
+  length: number;
+  pokemon: typePokemonList;
+};

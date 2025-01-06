@@ -1,5 +1,8 @@
+import { typeListPokemonAtom } from "@/app/jotai/pokemon/get";
+import { fetchPokemonDataByType } from "@/app/lib/fetch";
 import { ResultsType } from "@/app/type/type";
-import { useState } from "react";
+import { useAtom } from "jotai";
+import { useEffect, useState } from "react";
 
 type pokemonTypesProps = {
   typeList: ResultsType[];
@@ -7,6 +10,8 @@ type pokemonTypesProps = {
 
 const useModel = ({ typeList }: pokemonTypesProps) => {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [typeListPokemon, setTypeListPokemonAtom] =
+    useAtom(typeListPokemonAtom);
 
   const handleTypeChange = (typeName: string) => {
     setSelectedTypes((prev) =>
@@ -18,6 +23,23 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
   const omitTheTypeWithNoIcons = typeList.filter(
     (type) => type.name !== "stellar" && type.name !== "unknown"
   );
+
+  useEffect(() => {
+    if (!selectedTypes[0]) {
+      return;
+    }
+
+    const fetchData = async () => {
+      const data = await fetchPokemonDataByType({ type: selectedTypes[0] });
+      if (data.length === 0) {
+        return;
+      }
+
+      setTypeListPokemonAtom(data.pokemon);
+    };
+
+    fetchData();
+  }, [selectedTypes[0]]);
 
   return { omitTheTypeWithNoIcons, selectedTypes, handleTypeChange };
 };
