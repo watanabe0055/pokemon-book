@@ -1,9 +1,13 @@
 "use client";
 
+import { selectedTypePokemonListAtom } from "@/app/jotai/pokemon/reset";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import { useAtomValue } from "jotai";
 import { useCallback, useState } from "react";
 
 const useModel = () => {
+  const selectedTypePokemonList = useAtomValue(selectedTypePokemonListAtom);
+
   const [isOpen, setIsOpen] = useState(false);
   const [modelContent, setModelContent] =
     useState<ConvertPokemonUnionSpeciesType>();
@@ -25,6 +29,7 @@ const useModel = () => {
     modelContent,
     handleModelOpen,
     handleModelClose,
+    selectedTypePokemonList,
   };
 };
 

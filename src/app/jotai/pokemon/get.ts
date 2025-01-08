@@ -4,4 +4,7 @@ import { atom } from "jotai";
 
 export const allGetPokemonAtom = atom<GetPokemonDataUnionSpeciesListType>();
 
-export const typeListPokemonAtom = atom<typePokemonList>();
+/**
+ * 選択したタイプ別に名前とurlだけを取得したポケモンリスト
+ */
+export const typeListPokemonAtom = atom<Array<typePokemonList>>();

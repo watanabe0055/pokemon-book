@@ -46,18 +46,18 @@ export type GetTypeListResponse = {
 };
 
 /**
+ * pokemonの型定義
+ */
+type PokemonType = {
+  name: string;
+  url: string;
+};
+/**
  * ポケモンをタイプをキーにしとくした時
  */
 export type typePokemonList = {
-  pokemon: [
-    pokemon: {
-      pokemon: {
-        name: string;
-        url: string;
-      };
-      slot: number;
-    }
-  ];
+  pokemon: PokemonType;
+  slot: number;
 };
 
 /**
@@ -65,5 +65,5 @@ export type typePokemonList = {
  */
 export type GetPokemonDataTypeListUnionType = {
   length: number;
-  pokemon: typePokemonList;
+  pokemon: Array<typePokemonList>;
 };
