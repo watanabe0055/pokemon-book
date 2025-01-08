@@ -11,13 +11,22 @@ type PokemonIndexProps = {
 };
 
 const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
-  const { isOpen, modelContent, handleModelOpen, handleModelClose } =
-    useModel();
+  const {
+    isOpen,
+    modelContent,
+    handleModelOpen,
+    handleModelClose,
+    selectedTypePokemonList,
+  } = useModel();
   const [hoveredPokemon, setHoveredPokemon] = useState<number | null>(null);
 
   if (!pokemonData) {
     return <div>Loading...</div>;
   }
+
+  // 表示するポケモンデータを選択
+  const displayPokemon =
+    selectedTypePokemonList.length > 0 ? selectedTypePokemonList : pokemonData;
 
   return (
     <>
@@ -29,7 +38,7 @@ const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
       <div className="container px-4 py-8 mx-auto">
         <h1 className="mb-8 text-4xl font-bold text-center">Poke図鑑</h1>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {pokemonData.map((pokemon) => (
+          {displayPokemon.map((pokemon) => (
             <div key={pokemon.id}>
               <PokemonIndexDetail
                 pokemon={pokemon}

@@ -3,7 +3,7 @@ import { selectedTypePokemonListAtom } from "@/app/jotai/pokemon/reset";
 import { fetchPokemonData, fetchPokemonDataByType } from "@/app/lib/fetch";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { ResultsType } from "@/app/type/type";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { useResetAtom } from "jotai/utils";
 import { useEffect, useState } from "react";
 
@@ -17,9 +17,7 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
   const [typeListPokemon, setTypeListPokemonAtom] =
     useAtom(typeListPokemonAtom);
 
-  const [selectedTypePokemonList, setSelectedTypePokemonList] = useAtom(
-    selectedTypePokemonListAtom
-  );
+  const setSelectedTypePokemonList = useSetAtom(selectedTypePokemonListAtom);
   const resetPokemonList = useResetAtom(selectedTypePokemonListAtom);
 
   const handleTypeChange = (typeName: string) => {
@@ -35,6 +33,7 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
 
   useEffect(() => {
     if (!selectedTypes[0]) {
+      resetPokemonList();
       return;
     }
 
