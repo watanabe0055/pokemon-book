@@ -1,13 +1,11 @@
-import {
-  selectedTypePokemonListAtom,
-  typeListPokemonAtom,
-} from "@/app/jotai/pokemon/get";
+import { typeListPokemonAtom } from "@/app/jotai/pokemon/get";
+import { selectedTypePokemonListAtom } from "@/app/jotai/pokemon/reset";
 import { fetchPokemonData, fetchPokemonDataByType } from "@/app/lib/fetch";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { ResultsType } from "@/app/type/type";
 import { useAtom } from "jotai";
+import { useResetAtom } from "jotai/utils";
 import { useEffect, useState } from "react";
-import { RESET } from "jotai/utils";
 
 type pokemonTypesProps = {
   typeList: ResultsType[];
@@ -15,12 +13,14 @@ type pokemonTypesProps = {
 
 const useModel = ({ typeList }: pokemonTypesProps) => {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+
   const [typeListPokemon, setTypeListPokemonAtom] =
     useAtom(typeListPokemonAtom);
 
   const [selectedTypePokemonList, setSelectedTypePokemonList] = useAtom(
     selectedTypePokemonListAtom
   );
+  const resetPokemonList = useResetAtom(selectedTypePokemonListAtom);
 
   const handleTypeChange = (typeName: string) => {
     setSelectedTypes((prev) =>
@@ -54,7 +54,7 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
     if (!typeListPokemon) {
       return;
     }
-
+    resetPokemonList();
     // 各ポケモンデータを非同期で取得する
     const promises = typeListPokemon.map((pokemon) =>
       fetchPokemonData({ id: pokemon.pokemon.name })
