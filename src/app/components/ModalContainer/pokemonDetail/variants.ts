@@ -27,7 +27,7 @@ export const typeCard = tv({
       water: clsx("bg-blue-600", "text-white"),
     },
     fontSize: {
-      xs: "text-xs",
+      xs: "text-[0.6rem]",
       sm: "text-sm",
     },
   },
