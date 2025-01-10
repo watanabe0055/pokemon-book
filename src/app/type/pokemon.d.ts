@@ -136,6 +136,7 @@ export type GetPokemonDataUnionSpeciesListType = {
 export type ConvertPokemonUnionSpeciesType = {
   id: number;
   name: string;
+  names: PokemonSpecies;
   sprites: SpritesType;
   stats: StatsType;
   types: Types;
