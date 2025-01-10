@@ -24,8 +24,12 @@ export default function PokemonSearch() {
         </h1>
         <form action={handleSubmit} className="space-y-4">
           <div className="relative">
+            <label htmlFor="pokemon-search" className="sr-only">
+              ポケモンの名前またはID
+            </label>
             <input
               type="text"
+              id="pokemon-search"
               name="query"
               placeholder="Enter Pokémon name or ID"
               className="w-full px-4 py-2 transition-colors border-2 border-gray-300 rounded-full focus:outline-none focus:border-purple-500"

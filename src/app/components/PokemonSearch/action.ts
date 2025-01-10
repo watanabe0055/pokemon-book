@@ -6,8 +6,10 @@ import { fetchPokemonData } from "@/app/lib/fetch";
 // import { fetchPokemon } from "./lib/pokemon";
 
 export async function searchPokemon(formData: FormData) {
-  const query = formData.get("query") as string;
-  if (!query) return null;
+  const query = formData.get("query");
+  if (!query || typeof query !== "string" || query.trim() === "") {
+    throw new Error("検索クエリが無効です");
+  }
 
   // 正しい検索処理
   const searchWordConversion = (query: string) => {
@@ -21,6 +23,4 @@ export async function searchPokemon(formData: FormData) {
   if (!convertedId) return null;
 
   return await fetchPokemonData({ id: convertedId.toString() });
-  // 実際の処理を呼び出す例
-  // return await fetchPokemon(convertedId);
 }
