@@ -4,18 +4,23 @@ import { useState } from "react";
 import { searchPokemon } from "./action";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonSearchDetail from "../ModalContainer/pokemonSearchDetail";
+import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
 
 export default function PokemonSearch() {
-  const [pokemon, setPokemon] = useState<ConvertPokemonUnionSpeciesType>();
+  const [pokemon, setPokemon] = useState<
+    ConvertPokemonUnionSpeciesType & AbilityObjectResponseType
+  >();
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
     setLoading(true);
     const result = await searchPokemon(formData);
-    setPokemon(result?.pokemonData);
+    setPokemon(
+      result?.pokemonData as ConvertPokemonUnionSpeciesType &
+        AbilityObjectResponseType
+    );
     setLoading(false);
   }
-  console.log("pokemon", pokemon);
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-purple-400 to-indigo-600">

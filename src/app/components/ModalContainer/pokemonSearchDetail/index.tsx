@@ -2,12 +2,16 @@ import Image from "next/image";
 import { convertStatsWord } from "@/app/lib/convert/stats";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import TypeList from "../../atoms/typeList";
+import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
+import useModel from "./useModel";
 
 type PokemonDetailProps = {
-  pokemonData: ConvertPokemonUnionSpeciesType;
+  pokemonData: ConvertPokemonUnionSpeciesType & AbilityObjectResponseType;
 };
 
 const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
+  const { abilityJaFilter } = useModel({ pokemon: pokemonData });
+
   return (
     <div className="w-full max-w-4xl p-8 mx-auto mt-8 bg-white rounded-lg shadow-xl">
       <div className="flex flex-col gap-8 md:flex-row">
@@ -56,6 +60,13 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             ))}
           </div>
         </div>
+      </div>
+      <div>
+        特性
+        {abilityJaFilter &&
+          abilityJaFilter.map((ability) => (
+            <p key={ability.name}>{ability.name}</p>
+          ))}
       </div>
     </div>
   );
