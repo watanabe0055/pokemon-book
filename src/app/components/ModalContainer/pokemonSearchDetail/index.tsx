@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { convertStatsWord } from "@/app/lib/convert/stats";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import TypeList from "../../atoms/typeList";
 
 type PokemonDetailProps = {
   pokemonData: ConvertPokemonUnionSpeciesType;
@@ -29,14 +30,7 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             </h2>
           </div>
           <div className="flex justify-center gap-2 mt-4">
-            {pokemonData.types.map((type) => (
-              <span
-                key={type.type.name}
-                className="px-3 py-1 text-sm font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500"
-              >
-                {type.type.name}
-              </span>
-            ))}
+            <TypeList typeList={pokemonData.types} />
           </div>
         </div>
         <div className="flex-1">

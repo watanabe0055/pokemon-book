@@ -15,6 +15,7 @@ export default function PokemonSearch() {
     setPokemon(result?.pokemonData);
     setLoading(false);
   }
+  console.log("pokemon", pokemon);
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-purple-400 to-indigo-600">
@@ -31,7 +32,7 @@ export default function PokemonSearch() {
               type="text"
               id="pokemon-search"
               name="query"
-              placeholder="Enter Pokémon name or ID"
+              placeholder="ピカチュウ"
               className="w-full px-4 py-2 transition-colors border-2 border-gray-300 rounded-full focus:outline-none focus:border-purple-500"
               required
             />
