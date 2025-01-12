@@ -8,6 +8,7 @@ type PokemonDetailProps = {
 
 const useModel = ({ pokemon }: PokemonDetailProps) => {
   const abilityJaFilter = convertFilterJaAbility(pokemon.abilities.names);
+
   return {
     abilityJaFilter,
   };

@@ -5,6 +5,7 @@ import { searchPokemon } from "./action";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonSearchDetail from "../ModalContainer/pokemonSearchDetail";
 import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
+import { Typography } from "../atoms/Typography";
 
 export default function PokemonSearch() {
   const [pokemon, setPokemon] = useState<
@@ -25,9 +26,10 @@ export default function PokemonSearch() {
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-purple-400 to-indigo-600">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-xl">
-        <h1 className="mb-6 text-3xl font-bold text-center text-gray-800">
-          Pokémon Search
-        </h1>
+        <Typography color="black" weight="medium" variant="h3" align="center">
+          <span className="mb-6">Pokémon Search</span>
+        </Typography>
+
         <form action={handleSubmit} className="space-y-4">
           <div className="relative">
             <label htmlFor="pokemon-search" className="sr-only">

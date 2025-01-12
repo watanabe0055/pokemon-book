@@ -1,4 +1,4 @@
-import { namesType } from "@/app/type/pokemonAbility";
+import { flavorTextEntriesType, namesType } from "@/app/type/pokemonAbility";
 
 export const convertFilterJaAbility = (names: namesType) => {
   const JaWord = names.filter((name) => {

@@ -29,7 +29,7 @@ type flavorTextEntryType = {
 /**
  * @todo これ使う
  */
-type flavorTextEntriesType = Array<flavorTextEntryType>;
+export type flavorTextEntriesType = Array<flavorTextEntryType>;
 
 /**
  * @todo これ使う

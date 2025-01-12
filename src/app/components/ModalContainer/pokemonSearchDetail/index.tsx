@@ -4,6 +4,8 @@ import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import TypeList from "../../atoms/typeList";
 import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
 import useModel from "./useModel";
+import { Typography } from "../../atoms/Typography";
+import { Glassmorphism } from "../../atoms/Glassmorphism";
 
 type PokemonDetailProps = {
   pokemonData: ConvertPokemonUnionSpeciesType & AbilityObjectResponseType;
@@ -37,17 +39,27 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             <TypeList typeList={pokemonData.types} />
           </div>
         </div>
+      </div>
+      <Glassmorphism padding="sm" color="white" border="none">
         <div className="flex-1">
-          <h3 className="mb-4 text-2xl font-semibold text-gray-800">Stats</h3>
+          <div className="mb-4">
+            <Typography color="black" weight="bold" variant="h3">
+              ステータス
+            </Typography>
+          </div>
           <div className="space-y-4">
             {pokemonData.stats.map((stat) => (
               <div key={stat.stat.name}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-gray-600 capitalize">
-                    {convertStatsWord(stat)}
+                  <span>
+                    <Typography color="muted" variant="p">
+                      {convertStatsWord(stat)}
+                    </Typography>
                   </span>
-                  <span className="text-sm font-semibold text-gray-800">
-                    {stat.base_stat}
+                  <span>
+                    <Typography color="black" variant="p">
+                      {stat.base_stat}
+                    </Typography>
                   </span>
                 </div>
                 <div className="w-full h-3 overflow-hidden bg-gray-200 rounded-full">
@@ -60,14 +72,25 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             ))}
           </div>
         </div>
-      </div>
-      <div>
-        特性
-        {abilityJaFilter &&
-          abilityJaFilter.map((ability) => (
-            <p key={ability.name}>{ability.name}</p>
-          ))}
-      </div>
+      </Glassmorphism>
+
+      <Glassmorphism padding="sm" color="white" border="none">
+        <div className="flex-1">
+          <Typography color="black" weight="bold" variant="h3">
+            特性
+          </Typography>
+          <div>
+            {abilityJaFilter &&
+              abilityJaFilter.map((ability) => (
+                <li key={ability.name}>
+                  <Typography color="black" variant="p">
+                    {ability.name}
+                  </Typography>
+                </li>
+              ))}
+          </div>
+        </div>
+      </Glassmorphism>
     </div>
   );
 };
