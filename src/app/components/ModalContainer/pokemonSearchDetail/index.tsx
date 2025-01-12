@@ -79,7 +79,7 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
           <Typography color="black" weight="bold" variant="h3">
             特性
           </Typography>
-          <div>
+          <ul className="list-none">
             {abilityJaFilter &&
               abilityJaFilter.map((ability) => (
                 <li key={ability.name}>
@@ -88,7 +88,7 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
                   </Typography>
                 </li>
               ))}
-          </div>
+          </ul>
         </div>
       </Glassmorphism>
     </div>
