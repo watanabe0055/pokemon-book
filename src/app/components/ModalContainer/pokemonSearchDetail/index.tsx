@@ -1,12 +1,19 @@
 import Image from "next/image";
 import { convertStatsWord } from "@/app/lib/convert/stats";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import TypeList from "../../atoms/typeList";
+import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
+import useModel from "./useModel";
+import { Typography } from "../../atoms/Typography";
+import { Glassmorphism } from "../../atoms/Glassmorphism";
 
 type PokemonDetailProps = {
-  pokemonData: ConvertPokemonUnionSpeciesType;
+  pokemonData: ConvertPokemonUnionSpeciesType & AbilityObjectResponseType;
 };
 
 const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
+  const { abilityJaFilter } = useModel({ pokemon: pokemonData });
+
   return (
     <div className="w-full max-w-4xl p-8 mx-auto mt-8 bg-white rounded-lg shadow-xl">
       <div className="flex flex-col gap-8 md:flex-row">
@@ -29,27 +36,30 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             </h2>
           </div>
           <div className="flex justify-center gap-2 mt-4">
-            {pokemonData.types.map((type) => (
-              <span
-                key={type.type.name}
-                className="px-3 py-1 text-sm font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500"
-              >
-                {type.type.name}
-              </span>
-            ))}
+            <TypeList typeList={pokemonData.types} />
           </div>
         </div>
+      </div>
+      <Glassmorphism padding="sm" color="white" border="none">
         <div className="flex-1">
-          <h3 className="mb-4 text-2xl font-semibold text-gray-800">Stats</h3>
+          <div className="mb-4">
+            <Typography color="black" weight="bold" variant="h3">
+              ステータス
+            </Typography>
+          </div>
           <div className="space-y-4">
             {pokemonData.stats.map((stat) => (
               <div key={stat.stat.name}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-gray-600 capitalize">
-                    {convertStatsWord(stat)}
+                  <span>
+                    <Typography color="muted" variant="p">
+                      {convertStatsWord(stat)}
+                    </Typography>
                   </span>
-                  <span className="text-sm font-semibold text-gray-800">
-                    {stat.base_stat}
+                  <span>
+                    <Typography color="black" variant="p">
+                      {stat.base_stat}
+                    </Typography>
                   </span>
                 </div>
                 <div className="w-full h-3 overflow-hidden bg-gray-200 rounded-full">
@@ -62,7 +72,25 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             ))}
           </div>
         </div>
-      </div>
+      </Glassmorphism>
+
+      <Glassmorphism padding="sm" color="white" border="none">
+        <div className="flex-1">
+          <Typography color="black" weight="bold" variant="h3">
+            特性
+          </Typography>
+          <ul className="list-none">
+            {abilityJaFilter &&
+              abilityJaFilter.map((ability) => (
+                <li key={ability.name}>
+                  <Typography color="black" variant="p">
+                    {ability.name}
+                  </Typography>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </Glassmorphism>
     </div>
   );
 };

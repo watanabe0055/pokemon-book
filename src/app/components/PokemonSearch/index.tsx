@@ -4,24 +4,32 @@ import { useState } from "react";
 import { searchPokemon } from "./action";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonSearchDetail from "../ModalContainer/pokemonSearchDetail";
+import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
+import { Typography } from "../atoms/Typography";
 
 export default function PokemonSearch() {
-  const [pokemon, setPokemon] = useState<ConvertPokemonUnionSpeciesType>();
+  const [pokemon, setPokemon] = useState<
+    ConvertPokemonUnionSpeciesType & AbilityObjectResponseType
+  >();
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
     setLoading(true);
     const result = await searchPokemon(formData);
-    setPokemon(result?.pokemonData);
+    setPokemon(
+      result?.pokemonData as ConvertPokemonUnionSpeciesType &
+        AbilityObjectResponseType
+    );
     setLoading(false);
   }
 
   return (
     <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-purple-400 to-indigo-600">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-xl">
-        <h1 className="mb-6 text-3xl font-bold text-center text-gray-800">
-          Pokémon Search
-        </h1>
+        <Typography color="black" weight="medium" variant="h3" align="center">
+          <span className="mb-6">Pokémon Search</span>
+        </Typography>
+
         <form action={handleSubmit} className="space-y-4">
           <div className="relative">
             <label htmlFor="pokemon-search" className="sr-only">
@@ -31,7 +39,7 @@ export default function PokemonSearch() {
               type="text"
               id="pokemon-search"
               name="query"
-              placeholder="Enter Pokémon name or ID"
+              placeholder="ピカチュウ"
               className="w-full px-4 py-2 transition-colors border-2 border-gray-300 rounded-full focus:outline-none focus:border-purple-500"
               required
             />
