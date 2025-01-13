@@ -4,12 +4,12 @@ import { useState } from "react";
 import { searchPokemon } from "./action";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonSearchDetail from "../ModalContainer/pokemonSearchDetail";
-import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
+import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { Typography } from "../atoms/Typography";
 
 export default function PokemonSearch() {
   const [pokemon, setPokemon] = useState<
-    ConvertPokemonUnionSpeciesType & AbilityObjectResponseType
+    ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType
   >();
   const [loading, setLoading] = useState(false);
 
@@ -18,7 +18,7 @@ export default function PokemonSearch() {
     const result = await searchPokemon(formData);
     setPokemon(
       result?.pokemonData as ConvertPokemonUnionSpeciesType &
-        AbilityObjectResponseType
+        AbilityListHonoResponseType
     );
     setLoading(false);
   }
