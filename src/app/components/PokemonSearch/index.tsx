@@ -16,10 +16,9 @@ export default function PokemonSearch() {
   async function handleSubmit(formData: FormData) {
     setLoading(true);
     const result = await searchPokemon(formData);
-    setPokemon(
-      result?.pokemonData as ConvertPokemonUnionSpeciesType &
-        AbilityListHonoResponseType
-    );
+    if (result?.pokemonData) {
+      setPokemon(result.pokemonData);
+    }
     setLoading(false);
   }
 

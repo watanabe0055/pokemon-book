@@ -1,3 +1,4 @@
+import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 // 定義: 通常のスプライトの型
 type Sprite = string | null;
 
@@ -107,7 +108,7 @@ type RequestId = string;
 export type GetPokemonDataType = {
   id: RequestId;
   message: ResponseMessage;
-  pokemonData: ConvertPokemonDataType;
+  pokemonData: ConvertPokemonDataType & AbilityListHonoResponseType;
 };
 
 export type GetPokemonDataListType = {
@@ -119,7 +120,7 @@ export type GetPokemonDataListType = {
 export type GetPokemonDataUnionSpeciesType = {
   id: RequestId;
   message: ResponseMessage;
-  pokemonData?: ConvertPokemonUnionSpeciesType;
+  pokemonData?: ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType;
 };
 
 /**
