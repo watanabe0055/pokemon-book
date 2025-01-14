@@ -86,6 +86,9 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
           {pokemonData.abilities.map((ability) => (
             <li
               key={ability.name}
+              tabIndex={0}
+              role="article"
+              aria-label={`${ability.name}の特性`}
               className="pb-4 border-b border-gray-100 last:border-0 last:pb-0"
             >
               <Typography
