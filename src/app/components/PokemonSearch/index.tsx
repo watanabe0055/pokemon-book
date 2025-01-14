@@ -4,22 +4,21 @@ import { useState } from "react";
 import { searchPokemon } from "./action";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonSearchDetail from "../ModalContainer/pokemonSearchDetail";
-import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
+import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { Typography } from "../atoms/Typography";
 
 export default function PokemonSearch() {
   const [pokemon, setPokemon] = useState<
-    ConvertPokemonUnionSpeciesType & AbilityObjectResponseType
+    ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType
   >();
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
     setLoading(true);
     const result = await searchPokemon(formData);
-    setPokemon(
-      result?.pokemonData as ConvertPokemonUnionSpeciesType &
-        AbilityObjectResponseType
-    );
+    if (result?.pokemonData) {
+      setPokemon(result.pokemonData);
+    }
     setLoading(false);
   }
 

@@ -34,6 +34,8 @@ const typography = tv({
       default: "text-foreground",
       black: "text-black",
       muted: "text-muted-foreground",
+      gray: "text-gray-600",
+      lightGray: "text-gray-800",
     },
   },
   defaultVariants: {

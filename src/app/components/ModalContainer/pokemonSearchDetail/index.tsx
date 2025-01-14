@@ -2,18 +2,15 @@ import Image from "next/image";
 import { convertStatsWord } from "@/app/lib/convert/stats";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import TypeList from "../../atoms/typeList";
-import { AbilityObjectResponseType } from "@/app/type/pokemonAbility";
-import useModel from "./useModel";
+import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { Typography } from "../../atoms/Typography";
 import { Glassmorphism } from "../../atoms/Glassmorphism";
 
 type PokemonDetailProps = {
-  pokemonData: ConvertPokemonUnionSpeciesType & AbilityObjectResponseType;
+  pokemonData: ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType;
 };
 
 const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
-  const { abilityJaFilter } = useModel({ pokemon: pokemonData });
-
   return (
     <div className="w-full max-w-4xl p-8 mx-auto mt-8 bg-white rounded-lg shadow-xl">
       <div className="flex flex-col gap-8 md:flex-row">
@@ -74,22 +71,46 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
         </div>
       </Glassmorphism>
 
-      <Glassmorphism padding="sm" color="white" border="none">
-        <div className="flex-1">
-          <Typography color="black" weight="bold" variant="h3">
+      <Glassmorphism
+        padding="lg"
+        color="white"
+        border="none"
+        className="mt-3 transition-shadow shadow-lg hover:shadow-xl"
+      >
+        <p className="mb-4">
+          <Typography variant="h3" weight="bold" color="black">
             特性
           </Typography>
-          <ul className="list-none">
-            {abilityJaFilter &&
-              abilityJaFilter.map((ability) => (
-                <li key={ability.name}>
-                  <Typography color="black" variant="p">
-                    {ability.name}
-                  </Typography>
-                </li>
-              ))}
-          </ul>
-        </div>
+        </p>
+        <ul className="space-y-4">
+          {pokemonData.abilities.map((ability) => (
+            <li
+              key={ability.name}
+              tabIndex={0}
+              role="article"
+              aria-label={`${ability.name}の特性`}
+              className="pb-4 border-b border-gray-100 last:border-0 last:pb-0"
+            >
+              <Typography
+                variant="h5"
+                weight="semibold"
+                className="mb-1"
+                color="lightGray"
+              >
+                {ability.name}
+              </Typography>
+              <p>
+                <Typography
+                  variant="p"
+                  className="leading-relaxed"
+                  color="gray"
+                >
+                  {ability.flavor_text}
+                </Typography>
+              </p>
+            </li>
+          ))}
+        </ul>
       </Glassmorphism>
     </div>
   );

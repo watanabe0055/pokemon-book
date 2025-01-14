@@ -81,9 +81,13 @@ type AbilityListType = Array<AbilityType>;
 /**
  * honoAPIでコンバートしてアビリティーの一部だけを返してるプロパティ
  */
-export type AbilityObjectResponseType = {
-  abilities: {
-    abilities: AbilityListType;
-    names: namesType;
-  };
+
+export type AbilityHonoResponseType = Pick<
+  flavorTextEntryType,
+  "flavor_text" | "language" | "version_group"
+> &
+  Pick<AbilityResponseType, "name">;
+
+export type AbilityListHonoResponseType = {
+  abilities: Array<AbilityHonoResponseType>;
 };
