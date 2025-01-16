@@ -4,7 +4,7 @@ import { fetchPokemonData, fetchPokemonDataByType } from "@/app/lib/fetch";
 import { ConvertPokemonUnionSpeciesType, TypeName } from "@/app/type/pokemon";
 import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { ResultsType } from "@/app/type/type";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { useResetAtom } from "jotai/utils";
 import { useEffect, useMemo, useState } from "react";
 
@@ -36,10 +36,10 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
     return selectedTypePokemonList.filter((poke) => {
       const typeNames = poke.types.map((type) => type.type.name);
 
-      // selectedTypes と完全一致するかチェック
+      // 選択された全てのタイプを持つポケモンのみをフィルタリング
       const hasAllSelectedTypes =
-        typeNames.length === selectedTypes.length && // タイプ数が一致
-        selectedTypes.every((type) => typeNames.includes(type)); // 全て含む
+        typeNames.length === selectedTypes.length && // ポケモンのタイプ数と選択されたタイプ数が一致
+        selectedTypes.every((type) => typeNames.includes(type)); // 選択された全てのタイプを含む
 
       return hasAllSelectedTypes;
     });
