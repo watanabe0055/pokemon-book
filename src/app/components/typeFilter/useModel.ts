@@ -1,10 +1,13 @@
 import { typeListPokemonAtom } from "@/app/jotai/pokemon/get";
-import { selectedTypePokemonListAtom } from "@/app/jotai/pokemon/reset";
+import {
+  selectedTypePokemonFilterListAtom,
+  selectedTypePokemonListAtom,
+} from "@/app/jotai/pokemon/reset";
 import { fetchPokemonData, fetchPokemonDataByType } from "@/app/lib/fetch";
 import { ConvertPokemonUnionSpeciesType, TypeName } from "@/app/type/pokemon";
 import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { ResultsType } from "@/app/type/type";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { useResetAtom } from "jotai/utils";
 import { useEffect, useMemo, useState } from "react";
 
@@ -20,6 +23,10 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
 
   const [selectedTypePokemonList, setSelectedTypePokemonList] = useAtom(
     selectedTypePokemonListAtom
+  );
+
+  const setSelectedTypePokemonFilterListAtom = useSetAtom(
+    selectedTypePokemonFilterListAtom
   );
   const resetPokemonList = useResetAtom(selectedTypePokemonListAtom);
 
@@ -45,9 +52,28 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
     });
   }, [selectedTypePokemonList, selectedTypes]);
 
-  // useEffect(() => {
-  //   setSelectedTypePokemonList(filteredPokemonList);
-  // }, [selectedTypes[1]]);
+  useEffect(() => {
+    // selectedTypesまたはselectedTypePokemonListが変更された場合のみ、フィルタリストを設定する
+    setSelectedTypePokemonFilterListAtom(selectedTypePokemonList);
+  }, [selectedTypePokemonList]);
+
+  useEffect(() => {
+    if (selectedTypes.length === 1) {
+      // selectedTypes が 1 つの場合、全てのポケモンリストを適用
+      setSelectedTypePokemonFilterListAtom(selectedTypePokemonList);
+    } else if (selectedTypes.length >= 2) {
+      // selectedTypes が 2 つ以上の場合、フィルタリングされたリストを適用
+      setSelectedTypePokemonFilterListAtom(filteredPokemonList);
+    } else {
+      // 選択されたタイプがない場合
+      setSelectedTypePokemonFilterListAtom([]); // 空のリストを設定
+    }
+  }, [
+    selectedTypes,
+    selectedTypePokemonList,
+    filteredPokemonList,
+    setSelectedTypePokemonFilterListAtom,
+  ]);
 
   const handleTypeChange = (typeName: TypeName) => {
     setSelectedTypes((prev) =>
