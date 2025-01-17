@@ -7,3 +7,10 @@ import { atomWithReset } from "jotai/utils";
 export const selectedTypePokemonListAtom = atomWithReset<
   Array<ConvertPokemonUnionSpeciesType>
 >([]);
+
+/**
+ * 選択したタイプを元にデータをゲットしたポケモンリスト
+ */
+export const selectedTypePokemonFilterListAtom = atomWithReset<
+  Array<ConvertPokemonUnionSpeciesType>
+>([]);
