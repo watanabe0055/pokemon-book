@@ -68,12 +68,7 @@ const useModel = ({ typeList }: pokemonTypesProps) => {
       // 選択されたタイプがない場合
       setSelectedTypePokemonFilterListAtom([]); // 空のリストを設定
     }
-  }, [
-    selectedTypes,
-    selectedTypePokemonList,
-    filteredPokemonList,
-    setSelectedTypePokemonFilterListAtom,
-  ]);
+  }, [selectedTypes, selectedTypePokemonList, filteredPokemonList]);
 
   const handleTypeChange = (typeName: TypeName) => {
     setSelectedTypes((prev) =>
