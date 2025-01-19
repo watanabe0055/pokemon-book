@@ -27,10 +27,15 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
           <p className="text-sm text-gray-500">
             No. {pokemonData.id.toString().padStart(4, "0")}
           </p>
-          <h2
-            className={clsx("mt-2 text-2xl font-bold", "hover:text-gray-500")}
-          >
-            <Link href={`${pokemonData.id}`}>{pokemonData.name}</Link>
+          <h2 className={clsx("mt-2 text-2xl font-bold")}>
+            <Link
+              replace
+              href={`${pokemonData.id}`}
+              className={clsx("hover:text-gray-500")}
+              aria-label={`${pokemonData.name}の詳細を表示`}
+            >
+              {pokemonData.name}
+            </Link>
           </h2>
         </div>
       </div>
