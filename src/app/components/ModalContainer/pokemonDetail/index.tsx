@@ -3,6 +3,8 @@ import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 
 import Image from "next/image";
 import TypeList from "../../atoms/typeList";
+import Link from "next/link";
+import clsx from "clsx";
 
 type PokemonDetailProps = {
   pokemonData: ConvertPokemonUnionSpeciesType;
@@ -25,7 +27,11 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
           <p className="text-sm text-gray-500">
             No. {pokemonData.id.toString().padStart(4, "0")}
           </p>
-          <h2 className="mt-2 text-2xl font-bold">{pokemonData.name}</h2>
+          <h2
+            className={clsx("mt-2 text-2xl font-bold", "hover:text-gray-500")}
+          >
+            <Link href={`${pokemonData.id}`}>{pokemonData.name}</Link>
+          </h2>
         </div>
       </div>
       <div className="flex-1">
