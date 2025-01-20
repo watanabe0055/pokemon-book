@@ -12,26 +12,20 @@ export default function Header() {
       <div className="container px-4 py-4 mx-auto">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-indigo-600">
-            PokeSearch
+            Pokémon
           </Link>
           <nav className="hidden space-x-8 md:flex">
             <Link
               href="/"
               className="text-gray-600 transition-colors hover:text-indigo-600"
             >
-              Home
+              Pokémon List
             </Link>
             <Link
               href="/search"
               className="text-gray-600 transition-colors hover:text-indigo-600"
             >
               Search
-            </Link>
-            <Link
-              href="/list"
-              className="text-gray-600 transition-colors hover:text-indigo-600"
-            >
-              Pokémon List
             </Link>
           </nav>
           <div className="flex items-center space-x-4">
@@ -61,19 +55,13 @@ export default function Header() {
               href="/"
               className="py-2 text-gray-600 transition-colors hover:text-indigo-600"
             >
-              Home
+              Pokémon List
             </Link>
             <Link
               href="/search"
               className="py-2 text-gray-600 transition-colors hover:text-indigo-600"
             >
               Search
-            </Link>
-            <Link
-              href="/list"
-              className="py-2 text-gray-600 transition-colors hover:text-indigo-600"
-            >
-              Pokémon List
             </Link>
           </nav>
         </div>
