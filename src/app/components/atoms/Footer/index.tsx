@@ -23,7 +23,8 @@ export default function Footer() {
           </nav>
           <div className="flex space-x-4">
             <a
-              href="https://github.com"
+              href="https://github.com/watanabe0055/pokemon-book"
+              aria-label="GitHubでプロジェクトを見る"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 transition-colors hover:text-indigo-600"

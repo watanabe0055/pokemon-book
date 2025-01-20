@@ -38,6 +38,8 @@ export default function Header() {
             <button
               className="text-gray-600 transition-colors md:hidden focus:outline-none hover:text-indigo-600"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
