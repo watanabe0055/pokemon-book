@@ -1,6 +1,6 @@
 "use server";
 
-import { POKEMON_JAPANESE_NAMES } from "@/app/constants";
+import { POKEMON_JAPANESE_NAMES } from "@/app/constants/pokemon";
 import { fetchPokemonData } from "@/app/lib/fetch";
 
 // import { fetchPokemon } from "./lib/pokemon";
