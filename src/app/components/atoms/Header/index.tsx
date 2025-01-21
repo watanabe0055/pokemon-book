@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { LINK_LIST } from "@/app/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,22 +16,19 @@ export default function Header() {
             Pokémon
           </Link>
           <nav className="hidden space-x-8 md:flex">
-            <Link
-              href="/"
-              className="text-gray-600 transition-colors hover:text-indigo-600"
-            >
-              Pokémon List
-            </Link>
-            <Link
-              href="/search"
-              className="text-gray-600 transition-colors hover:text-indigo-600"
-            >
-              Search
-            </Link>
+            {LINK_LIST.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-gray-600 transition-colors hover:text-indigo-600"
+              >
+                {item.text}
+              </Link>
+            ))}
           </nav>
           <div className="flex items-center space-x-4">
             <Link
-              href="/search"
+              href="/pokemon/search"
               className="text-gray-600 transition-colors hover:text-indigo-600"
             >
               <Search className="w-5 h-5" />
@@ -53,18 +51,15 @@ export default function Header() {
       {isMenuOpen && (
         <div className="px-4 py-2 bg-white border-t border-gray-200 md:hidden">
           <nav className="flex flex-col space-y-2">
-            <Link
-              href="/"
-              className="py-2 text-gray-600 transition-colors hover:text-indigo-600"
-            >
-              Pokémon List
-            </Link>
-            <Link
-              href="/search"
-              className="py-2 text-gray-600 transition-colors hover:text-indigo-600"
-            >
-              Search
-            </Link>
+            {LINK_LIST.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="py-2 text-gray-600 transition-colors hover:text-indigo-600"
+              >
+                {item.text}
+              </Link>
+            ))}
           </nav>
         </div>
       )}

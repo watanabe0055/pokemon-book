@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Github } from "lucide-react";
+import { LINK_LIST } from "@/app/constants";
 
 export default function Footer() {
   return (
@@ -11,15 +12,15 @@ export default function Footer() {
             <p className="text-sm">Your Pokémon companion</p>
           </div>
           <nav className="flex flex-wrap justify-center mb-4 space-x-6 md:justify-end md:mb-0">
-            <Link href="/" className="transition-colors hover:text-indigo-600">
-              Pokémon List
-            </Link>
-            <Link
-              href="/search"
-              className="transition-colors hover:text-indigo-600"
-            >
-              Search
-            </Link>
+            {LINK_LIST.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-indigo-600"
+              >
+                {item.text}
+              </Link>
+            ))}
           </nav>
           <div className="flex space-x-4">
             <a

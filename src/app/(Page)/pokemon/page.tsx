@@ -1,7 +1,7 @@
-import TypeFilter from "../components/typeFilter";
-import { fetchAllPokemonData } from "../lib/fetch";
-import { fetchPokemonTypes } from "../lib/fetch/type";
-import PokemonIndexPagePart from "../pageParts/pokemon";
+import TypeFilter from "../../components/typeFilter";
+import { fetchAllPokemonData } from "../../lib/fetch";
+import { fetchPokemonTypes } from "../../lib/fetch/type";
+import PokemonIndexPagePart from "../../pageParts/pokemon";
 
 export default async function Home() {
   const pokemonTypes = await fetchPokemonTypes();
