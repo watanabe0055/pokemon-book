@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { fetchPokemonData } from "../lib/fetch";
+import clsx from "clsx";
 
 async function getServerPickUpPokemon() {
   try {
@@ -50,7 +51,10 @@ export default async function Home() {
           </p>
           <Link
             href="/search"
-            className="inline-block px-8 py-3 text-lg font-semibold text-white transition-colors duration-300 bg-red-600 rounded-full hover:bg-red-700 animate-bounce"
+            className={clsx(
+              "inline-block px-8 py-3 text-lg font-semibold text-white bg-red-600",
+              "transition-colors duration-300  rounded-full hover:bg-red-700 animate-bounce"
+            )}
           >
             探索を始める
           </Link>
@@ -65,11 +69,8 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {pokemonList.map((pokemon) => (
-              <Link href={`pokemon/${pokemon.id}`}>
-                <div
-                  key={pokemon.id}
-                  className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl"
-                >
+              <Link href={`pokemon/${pokemon.id}`} key={pokemon.id}>
+                <div className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl">
                   <Image
                     src={pokemon.image || ""}
                     alt={`注目のポケモン ${pokemon.name}`}
