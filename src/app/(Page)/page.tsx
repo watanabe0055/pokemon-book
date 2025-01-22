@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchPokemonData } from "../lib/fetch";
 
-async function getServerPokemonImage() {
+async function getServerPickUpPokemon() {
   try {
     // ランダムなIDを4つ生成
     const randomIds = Array.from({ length: 4 }, () =>
@@ -27,7 +27,7 @@ async function getServerPokemonImage() {
 }
 
 export default async function Home() {
-  const pokemonList = await getServerPokemonImage();
+  const pokemonList = await getServerPickUpPokemon();
 
   return (
     <div className="space-y-16">
@@ -35,6 +35,7 @@ export default async function Home() {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <Image
           src="/gemini_pokemon_top.jpeg"
+          priority
           alt="カラフルなポケモンの背景"
           height={1080}
           width={1920}
@@ -64,25 +65,29 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {pokemonList.map((pokemon) => (
-              <div
-                key={pokemon.id}
-                className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl"
-              >
-                <Image
-                  src={pokemon.image || ""}
-                  alt={`注目のポケモン ${pokemon.name}`}
-                  width={200}
-                  height={200}
-                  className="object-cover w-full h-48"
-                />
-                <div className="p-4">
-                  <h3 className="mb-2 text-lg font-semibold">{pokemon.name}</h3>
+              <Link href={`pokemon/${pokemon.id}`}>
+                <div
+                  key={pokemon.id}
+                  className="overflow-hidden transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-xl"
+                >
+                  <Image
+                    src={pokemon.image || ""}
+                    alt={`注目のポケモン ${pokemon.name}`}
+                    width={200}
+                    height={200}
+                  />
+                  <div className="p-4">
+                    <h3 className="mb-2 text-lg font-semibold">
+                      {pokemon.name}
+                    </h3>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
+
       {/* コールトゥアクション */}
       <section className="container px-4 mx-auto text-center">
         <h2 className="mb-6 text-3xl font-bold md:text-4xl">
