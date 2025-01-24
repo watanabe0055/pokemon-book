@@ -1,26 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
-import { fetchPokemonData } from "../lib/fetch";
+import { fetchPokemonData, fetchPokemonDateByPickUp } from "../lib/fetch";
 import clsx from "clsx";
 import PickUpPokemon from "../components/atoms/PickUpPokemon";
 
 async function getServerPickUpPokemon() {
   try {
-    // ランダムなIDを4つ生成
-    const randomIds = Array.from({ length: 4 }, () =>
-      Math.floor(Math.random() * 1025).toString()
-    );
-
-    // 並列でポケモンデータを取得
-    const pokemonList = await Promise.all(
-      randomIds.map((id) => fetchPokemonData({ id }))
-    );
+    const pickupPokemonList = await fetchPokemonDateByPickUp();
 
     // 各ポケモンの画像データを整形
-    return pokemonList.map((pokemon) => ({
-      id: pokemon.pokemonData?.id,
-      name: pokemon.pokemonData?.name,
-      image: pokemon.pokemonData?.sprites.other.official_artwork.front_default,
+    return pickupPokemonList?.pokemonPickupList?.map((pokemon) => ({
+      id: pokemon.id,
+      name: pokemon.name,
+      image: pokemon.sprites.other.official_artwork.front_default,
     }));
   } catch (error) {
     console.error("Failed to fetch Pokemon data:", error);

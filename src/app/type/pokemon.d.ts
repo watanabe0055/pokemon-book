@@ -105,6 +105,11 @@ export type ConvertPokemonDataType = {
 type ResponseMessage = string;
 type RequestId = string;
 
+export type GetPokemonDataPickUpType = {
+  message: ResponseMessage;
+  pokemonData: Array<ConvertPokemonDataType & AbilityListHonoResponseType>;
+};
+
 export type GetPokemonDataType = {
   id: RequestId;
   message: ResponseMessage;
@@ -121,6 +126,13 @@ export type GetPokemonDataUnionSpeciesType = {
   id: RequestId;
   message: ResponseMessage;
   pokemonData?: ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType;
+};
+
+export type GetPokemonDataUnionSpeciesTypeByPickUp = {
+  message: ResponseMessage;
+  pokemonPickupList?: Array<
+    ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType
+  >;
 };
 
 /**
