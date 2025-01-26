@@ -1,8 +1,10 @@
 import {
   GetPokemonDataListType,
+  GetPokemonDataPickUpType,
   GetPokemonDataType,
   GetPokemonDataUnionSpeciesListType,
   GetPokemonDataUnionSpeciesType,
+  GetPokemonDataUnionSpeciesTypeByPickUp,
 } from "../type/pokemon";
 import { SpeciesListType } from "../type/pokemonSpecies";
 import { GetPokemonDataTypeListUnionType } from "../type/type";
@@ -121,3 +123,41 @@ export const convertPokemonNameJa = (names: SpeciesListType): string => {
   // 見つかった場合はnameを返し、見つからない場合は空文字を返す
   return jaName?.name ?? "";
 };
+
+export const fetchPokemonDateByPickUp =
+  async (): Promise<GetPokemonDataUnionSpeciesTypeByPickUp> => {
+    const baseUrl =
+      process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
+    const path = `${baseUrl}v1/pickup`; // パス修正 ("/"を追加)
+
+    try {
+      const getData = await fetch(path);
+
+      // HTTPエラーのチェック
+      if (!getData.ok) {
+        return {
+          message: "Failed to fetch data",
+          pokemonPickupList: undefined,
+        };
+      }
+
+      const data: GetPokemonDataPickUpType = await getData.json();
+
+      // pokemonDataを変換し、nameプロパティを設定
+      const pokemonPickupList = data.pokemonData.map((pokemon) => ({
+        ...pokemon,
+        name: convertPokemonNameJa(pokemon.names), // 日本語名を設定
+      }));
+
+      return {
+        message: data.message,
+        pokemonPickupList,
+      };
+    } catch (error) {
+      console.error("ポケモンデータの取得中にエラーが発生しました:", error);
+      return {
+        message: "An unexpected error occurred",
+        pokemonPickupList: undefined,
+      };
+    }
+  };

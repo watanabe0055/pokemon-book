@@ -2,14 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 type PickUpPokemonProps = {
-  pokemonList: {
-    id?: number;
-    name?: string;
-    image?: string;
+  pokemonList?: {
+    id: number;
+    name: string;
+    image: string;
   }[];
 };
 
 const PickUpPokemon = ({ pokemonList }: PickUpPokemonProps) => {
+  if (!pokemonList) {
+    return null;
+  }
   return (
     <div className="container px-2 mx-auto">
       <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">
