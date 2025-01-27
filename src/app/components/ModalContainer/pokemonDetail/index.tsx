@@ -29,8 +29,7 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
           </p>
           <h2 className={clsx("mt-2 text-2xl font-bold")}>
             <Link
-              replace
-              href={`${pokemonData.id}`}
+              href={`/pokemon/${pokemonData.id}`}
               className={clsx("hover:text-gray-500")}
               aria-label={`${pokemonData.name}の詳細を表示`}
             >
