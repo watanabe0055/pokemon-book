@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { fetchPokemonData, fetchPokemonDateByPickUp } from "../lib/fetch";
+import { fetchPokemonDateByPickUp } from "../lib/fetch";
 import clsx from "clsx";
 import PickUpPokemon from "../components/atoms/PickUpPokemon";
 
