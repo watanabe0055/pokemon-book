@@ -9,6 +9,7 @@ async function getServerPokemonData(params: { slug: string }) {
     }
     return { pokemon: pokemon.pokemonData };
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch Pokemon data");
   }
 }

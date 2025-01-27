@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import ModalContainer, {
   ModalContainerProps,
 } from "@/app/components/ModalContainer";
@@ -62,6 +61,7 @@ const modelPokemonData: ModalContainerProps = {
         type: { name: "poison", url: "https://pokeapi.co/api/v2/type/4/" },
       },
     ],
+    names: undefined,
   },
 };
 
