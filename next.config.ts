@@ -1,9 +1,4 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-module.exports = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -13,5 +8,7 @@ module.exports = {
       },
     ],
   },
+  /* 他の設定をここに追加可能 */
 };
-export default nextConfig;
+
+module.exports = nextConfig;

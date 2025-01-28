@@ -10,4 +10,8 @@ export const LINK_LIST = [
     text: "Search",
     href: "/pokemon/search",
   },
+  {
+    text: "Type Filter",
+    href: "/pokemon/type",
+  },
 ];
