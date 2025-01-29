@@ -1,8 +1,13 @@
 import { favoritePokemonListAtom } from "@/app/jotai/favorit/get";
+import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { useAtom } from "jotai";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-const useModel = () => {
+type useModelProps = {
+  pokemonData: ConvertPokemonUnionSpeciesType;
+};
+
+const useModel = ({ pokemonData }: useModelProps) => {
   const [isFlag, setIsFlag] = useState(false);
   const [favoritePokemonList, setFavoritePokemonList] = useAtom(
     favoritePokemonListAtom
@@ -20,6 +25,12 @@ const useModel = () => {
     },
     [setFavoritePokemonList]
   );
+
+  useEffect(() => {
+    setIsFlag(favoritePokemonList.includes(pokemonData.id));
+  }, [pokemonData]);
+
+  console.log(favoritePokemonList);
 
   return {
     isFlag,

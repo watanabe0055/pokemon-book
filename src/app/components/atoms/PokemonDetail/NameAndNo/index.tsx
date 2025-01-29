@@ -10,7 +10,7 @@ type NameAndNoProps = {
 };
 
 const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
-  const { isFlag, toggleFavorite } = useModel();
+  const { isFlag, toggleFavorite } = useModel({ pokemonData });
 
   return (
     <div className="flex items-center justify-center gap-2 mt-4">
