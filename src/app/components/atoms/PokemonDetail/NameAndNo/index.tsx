@@ -3,12 +3,15 @@ import clsx from "clsx";
 import HeartSvg from "../../HeartSvg/HeartSvg";
 import Link from "next/link";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import useModel from "./useModel";
 
 type NameAndNoProps = {
   pokemonData: ConvertPokemonUnionSpeciesType;
 };
 
 const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
+  const { isFlag, setIsFlag } = useModel();
+
   return (
     <div className="flex items-center justify-center gap-2 mt-4">
       <div className="text-center">
@@ -26,8 +29,9 @@ const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
           </Link>
         </h2>
       </div>
-
-      <HeartSvg />
+      <div onClick={() => setIsFlag(!isFlag)}>
+        <HeartSvg isFavorite={isFlag} />
+      </div>
     </div>
   );
 };
