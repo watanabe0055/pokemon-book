@@ -29,7 +29,10 @@ const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
           </Link>
         </h2>
       </div>
-      <div onClick={() => setIsFlag(!isFlag)}>
+      <div
+        onClick={() => setIsFlag(!isFlag)}
+        className={clsx("cursor-pointer", isFlag && "animate-jello-vertical")}
+      >
         <HeartSvg isFavorite={isFlag} />
       </div>
     </div>
