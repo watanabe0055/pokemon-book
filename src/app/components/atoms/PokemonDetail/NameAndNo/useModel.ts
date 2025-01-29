@@ -23,7 +23,7 @@ const useModel = ({ pokemonData }: useModelProps) => {
           : [...prevList, id]
       );
     },
-    [setFavoritePokemonList]
+    [setFavoritePokemonList, setIsFlag]
   );
 
   useEffect(() => {

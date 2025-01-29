@@ -29,12 +29,16 @@ const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
           </Link>
         </h2>
       </div>
-      <div
+      <button
+        type="button"
         onClick={() => toggleFavorite(pokemonData.id)}
         className={clsx("cursor-pointer", isFlag && "animate-jello-vertical")}
+        aria-label={`${pokemonData.name}をお気に入り${
+          isFlag ? "から削除" : "に追加"
+        }`}
       >
         <HeartSvg isFavorite={isFlag} />
-      </div>
+      </button>
     </div>
   );
 };
