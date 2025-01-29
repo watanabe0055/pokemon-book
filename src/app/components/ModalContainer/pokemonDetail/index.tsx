@@ -22,7 +22,6 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
             className="mx-auto"
           />
         </div>
-
         <NameAndNo pokemonData={pokemonData} />
       </div>
 
