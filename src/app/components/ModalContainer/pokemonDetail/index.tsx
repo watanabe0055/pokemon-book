@@ -5,6 +5,7 @@ import Image from "next/image";
 import TypeList from "../../atoms/typeList";
 import Link from "next/link";
 import clsx from "clsx";
+import HeartSvg from "../../atoms/HeartSvg/HeartSvg";
 
 type PokemonDetailProps = {
   pokemonData: ConvertPokemonUnionSpeciesType;
@@ -23,22 +24,30 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
             className="mx-auto"
           />
         </div>
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-500">
-            No. {pokemonData.id.toString().padStart(4, "0")}
-          </p>
-          <h2 className={clsx("mt-2 text-2xl font-bold")}>
-            <Link
-              replace
-              href={`${pokemonData.id}`}
-              className={clsx("hover:text-gray-500")}
-              aria-label={`${pokemonData.name}の詳細を表示`}
-            >
-              {pokemonData.name}
-            </Link>
-          </h2>
+
+        <div className="mt-4 flex items-center justify-center gap-2">
+          {/* No と 名前を縦並びにする */}
+          <div className="text-center">
+            <p className="text-sm text-gray-500">
+              No. {pokemonData.id.toString().padStart(4, "0")}
+            </p>
+            <h2 className={clsx("text-2xl font-bold")}>
+              <Link
+                replace
+                href={`${pokemonData.id}`}
+                className={clsx("hover:text-gray-500")}
+                aria-label={`${pokemonData.name}の詳細を表示`}
+              >
+                {pokemonData.name}
+              </Link>
+            </h2>
+          </div>
+
+          {/* ハートアイコン */}
+          <HeartSvg />
         </div>
       </div>
+
       <div className="flex-1">
         <TypeList typeList={pokemonData.types} />
         <div className="space-y-2">
