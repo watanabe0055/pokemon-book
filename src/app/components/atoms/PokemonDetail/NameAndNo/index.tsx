@@ -10,7 +10,7 @@ type NameAndNoProps = {
 };
 
 const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
-  const { isFlag, setIsFlag } = useModel();
+  const { isFlag, toggleFavorite } = useModel();
 
   return (
     <div className="flex items-center justify-center gap-2 mt-4">
@@ -30,7 +30,7 @@ const NameAndNo = ({ pokemonData }: NameAndNoProps) => {
         </h2>
       </div>
       <div
-        onClick={() => setIsFlag(!isFlag)}
+        onClick={() => toggleFavorite(pokemonData.id)}
         className={clsx("cursor-pointer", isFlag && "animate-jello-vertical")}
       >
         <HeartSvg isFavorite={isFlag} />
