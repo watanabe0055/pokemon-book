@@ -5,9 +5,9 @@ import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 
 export type PokemonIndexDetailProps = {
   pokemon: ConvertPokemonUnionSpeciesType;
-  hoveredPokemon: number | null;
-  handleModelOpen: (pokemon: ConvertPokemonUnionSpeciesType) => void;
-  setHoveredPokemon: (pokemon: number | null) => void;
+  hoveredPokemon?: number | null;
+  handleModelOpen?: (pokemon: ConvertPokemonUnionSpeciesType) => void;
+  setHoveredPokemon?: (pokemon: number | null) => void;
 };
 const PokemonIndexDetail = ({
   pokemon,
@@ -25,9 +25,9 @@ const PokemonIndexDetail = ({
         "border border-gray-200",
         hoveredPokemon === pokemon.id && "bg-gray-100"
       )}
-      onClick={() => handleModelOpen(pokemon)}
-      onMouseEnter={() => setHoveredPokemon(pokemon.id)}
-      onMouseLeave={() => setHoveredPokemon(null)}
+      onClick={() => handleModelOpen && handleModelOpen(pokemon)}
+      onMouseEnter={() => setHoveredPokemon && setHoveredPokemon(pokemon.id)}
+      onMouseLeave={() => setHoveredPokemon && setHoveredPokemon(null)}
     >
       <div className="relative w-32 h-32 mb-4">
         <Image
