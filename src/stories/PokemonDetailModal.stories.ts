@@ -5,7 +5,7 @@ import ModalContainer, {
 
 // デフォルトエクスポートの設定
 const meta: Meta<typeof ModalContainer> = {
-  title: "Example/PokemonDetail",
+  title: "Pokemon/PokemonDetailModal",
   component: ModalContainer,
   parameters: {
     layout: "centered",

@@ -3,13 +3,13 @@ import clsx from "clsx";
 import TypeList from "../typeList";
 import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 
-type PokemonIndexDetailProps = {
+export type PokemonIndexDetailProps = {
   pokemon: ConvertPokemonUnionSpeciesType;
   hoveredPokemon: number | null;
   handleModelOpen: (pokemon: ConvertPokemonUnionSpeciesType) => void;
   setHoveredPokemon: (pokemon: number | null) => void;
 };
-const pokemonIndexDetail = ({
+const PokemonIndexDetail = ({
   pokemon,
   hoveredPokemon,
   handleModelOpen,
@@ -50,4 +50,4 @@ const pokemonIndexDetail = ({
   );
 };
 
-export default pokemonIndexDetail;
+export default PokemonIndexDetail;
