@@ -26,7 +26,9 @@ const PokemonIndexPagePart = ({
   return (
     <>
       <PokemonIndex pokemonData={pokemonData?.pokemonData} />
-      <Suspense fallback={<Loading />}>{isBottom && <Loading />}</Suspense>
+      <Suspense fallback={<Loading />}>
+        <Loading />
+      </Suspense>
     </>
   );
 };
