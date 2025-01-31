@@ -5,10 +5,7 @@ import { useModel } from "./useModel";
 import { Suspense, useEffect } from "react";
 import PokemonIndex from "@/app/components/pokemonIndex";
 import { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
-
-const Loader = () => {
-  return <div className="py-4 text-center">Loading more Pokémon...</div>;
-};
+import Loading from "@/app/components/atoms/Loading";
 
 type PokemonIndexPagePartProps = {
   InitialPokemonData: GetPokemonDataUnionSpeciesListType;
@@ -28,8 +25,12 @@ const PokemonIndexPagePart = ({
 
   return (
     <>
-      <PokemonIndex pokemonData={pokemonData?.pokemonData} />
-      <Suspense fallback={<Loader />}>{isBottom && <Loader />}</Suspense>
+      <div className="container px-4 py-8 mx-auto">
+        <PokemonIndex pokemonData={pokemonData?.pokemonData} />
+        <Suspense fallback={<Loading />}>
+          <Loading />
+        </Suspense>
+      </div>
     </>
   );
 };
