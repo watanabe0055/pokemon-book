@@ -25,10 +25,12 @@ const PokemonIndexPagePart = ({
 
   return (
     <>
-      <PokemonIndex pokemonData={pokemonData?.pokemonData} />
-      <Suspense fallback={<Loading />}>
-        <Loading />
-      </Suspense>
+      <div className="container px-4 py-8 mx-auto">
+        <PokemonIndex pokemonData={pokemonData?.pokemonData} />
+        <Suspense fallback={<Loading />}>
+          <Loading />
+        </Suspense>
+      </div>
     </>
   );
 };

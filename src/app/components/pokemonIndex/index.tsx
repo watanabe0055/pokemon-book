@@ -26,7 +26,7 @@ const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
         handleModelClose={handleModelClose}
         pokemonData={modelContent}
       />
-      <div className="container px-4 py-8 mx-auto">
+      <div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {pokemonData.map((pokemon) => (
             <div key={pokemon.id}>
