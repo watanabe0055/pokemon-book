@@ -23,7 +23,8 @@ const PokemonIndexDetail = ({
         "hover:shadow-xl hover:scale-105",
         "cursor-pointer",
         "border border-gray-200",
-        hoveredPokemon === pokemon.id && "bg-gray-100"
+        hoveredPokemon === pokemon.id && "bg-gray-100",
+        "h-full"
       )}
       onClick={() => handleModelOpen && handleModelOpen(pokemon)}
       onMouseEnter={() => setHoveredPokemon && setHoveredPokemon(pokemon.id)}
