@@ -44,7 +44,7 @@ export const useModel = ({ InitialPokemonData }: UseModelProps) => {
     if (isLoading) return;
     setIsLoading(true);
 
-    const nextOffset = offset + 30;
+    const nextOffset = offset + 20;
     setOffset(nextOffset);
 
     try {
