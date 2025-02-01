@@ -77,19 +77,28 @@ export const fetchAllPokemonData = async ({
     process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
   const path = `${baseUrl}v1/pokemon?offset=${offset}`;
 
-  const getData = await fetch(path);
-  const data: GetPokemonDataListType = await getData.json();
+  try {
+    const getData = await fetch(path);
+    if (!getData.ok) {
+      throw new Error("Pokemon not found");
+    }
 
-  // pokemonData配列内の各要素に対して処理を行い、namesを変換
-  const updatedPokemonData = data.pokemonData.map((pokemon) => ({
-    ...pokemon,
-    name: convertPokemonNameJa(pokemon.names), // namesを変換
-  }));
+    const data: GetPokemonDataListType = await getData.json();
 
-  return {
-    message: data.message,
-    pokemonData: updatedPokemonData,
-  };
+    // pokemonData配列内の各要素に対して処理を行い、namesを変換
+    const updatedPokemonData = data.pokemonData.map((pokemon) => ({
+      ...pokemon,
+      name: convertPokemonNameJa(pokemon.names), // namesを変換
+    }));
+
+    return {
+      message: data.message,
+      pokemonData: updatedPokemonData,
+    };
+  } catch (error) {
+    console.error("ポケモンデータの取得中にエラーが発生しました:", error);
+    throw new Error("Failed to fetch Pokemon data");
+  }
 };
 
 /**
@@ -135,10 +144,7 @@ export const fetchPokemonDateByPickUp =
 
       // HTTPエラーのチェック
       if (!getData.ok) {
-        return {
-          message: "Failed to fetch data",
-          pokemonPickupList: undefined,
-        };
+        throw new Error("Pokemon not found");
       }
 
       const data: GetPokemonDataPickUpType = await getData.json();
@@ -155,9 +161,6 @@ export const fetchPokemonDateByPickUp =
       };
     } catch (error) {
       console.error("ポケモンデータの取得中にエラーが発生しました:", error);
-      return {
-        message: "An unexpected error occurred",
-        pokemonPickupList: undefined,
-      };
+      throw new Error("Failed to fetch Pokemon data");
     }
   };
