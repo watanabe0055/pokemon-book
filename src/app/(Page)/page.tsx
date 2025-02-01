@@ -3,6 +3,7 @@ import Image from "next/image";
 import { fetchPokemonDateByPickUp } from "../lib/fetch";
 import clsx from "clsx";
 import PickUpPokemon from "../components/atoms/PickUpPokemon";
+import { Suspense } from "react";
 
 async function getServerPickUpPokemon() {
   try {
@@ -55,9 +56,13 @@ export default async function Home() {
       </section>
 
       {/* 注目のポケモンセクション */}
-      <section className="py-16 bg-gray-100">
-        <PickUpPokemon pokemonList={pokemonList} />
-      </section>
+      {pokemonList && pokemonList.length > 0 && (
+        <section className="py-16 bg-gray-100">
+          <Suspense fallback={"loading..."}>
+            <PickUpPokemon pokemonList={pokemonList} />
+          </Suspense>
+        </section>
+      )}
 
       {/* コールトゥアクション */}
       <section className="container px-4 mx-auto text-center">
