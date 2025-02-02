@@ -16,7 +16,7 @@ const PokemonIndex = ({ pokemonData }: PokemonIndexProps) => {
   const [hoveredPokemon, setHoveredPokemon] = useState<number | null>(null);
 
   if (!pokemonData) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   return (

@@ -3,7 +3,8 @@
 import useScrollDetection from "@/app/lib/scroll";
 import { useModel } from "./useModel";
 import { Suspense, useEffect } from "react";
-import PokemonIndex from "@/app/components/pokemonIndex";
+import { lazy } from "react";
+const PokemonIndex = lazy(() => import("@/app/components/pokemonIndex"));
 import { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
 import Loading from "@/app/components/atoms/Loading";
 
@@ -14,7 +15,9 @@ type PokemonIndexPagePartProps = {
 const PokemonIndexPagePart = ({
   InitialPokemonData,
 }: PokemonIndexPagePartProps) => {
-  const { pokemonData, loaderGetPokemon } = useModel({ InitialPokemonData });
+  const { pokemonData, loaderGetPokemon, isLoading } = useModel({
+    InitialPokemonData,
+  });
   const isBottom = useScrollDetection();
 
   useEffect(() => {
@@ -26,10 +29,10 @@ const PokemonIndexPagePart = ({
   return (
     <>
       <div className="container px-4 py-8 mx-auto">
-        <PokemonIndex pokemonData={pokemonData?.pokemonData} />
         <Suspense fallback={<Loading />}>
-          <Loading />
+          <PokemonIndex pokemonData={pokemonData?.pokemonData} />
         </Suspense>
+        {isLoading && <Loading />}
       </div>
     </>
   );

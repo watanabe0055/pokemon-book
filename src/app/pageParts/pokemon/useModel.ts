@@ -54,5 +54,5 @@ export const useModel = ({ InitialPokemonData }: UseModelProps) => {
     }
   };
 
-  return { pokemonData, loaderGetPokemon };
+  return { pokemonData, loaderGetPokemon, isLoading };
 };
