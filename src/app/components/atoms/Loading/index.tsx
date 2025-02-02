@@ -1,4 +1,4 @@
-import PokemonIndexDetail from "../pokemonIndexDetail";
+import PokemonIndexDetailSkeleton from "../PokemonIndexDetailSkelton";
 import { useModel } from "./useModel";
 
 const Loading = () => {
@@ -9,34 +9,7 @@ const Loading = () => {
       <div className="py-4">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {skeletons.map((skeleton, index) => (
-            <PokemonIndexDetail
-              key={index}
-              pokemon={{
-                id: 0,
-                name: "?????",
-                names: undefined,
-                sprites: {
-                  dream_world: {},
-                  home: {},
-                  other: {
-                    official_artwork: {
-                      front_default: "/ball.svg",
-                      front_shiny: "",
-                    },
-                  },
-                  back_default: null,
-                  back_female: null,
-                  back_shiny: null,
-                  back_shiny_female: null,
-                  front_default: null,
-                  front_female: null,
-                  front_shiny: null,
-                  front_shiny_female: null,
-                },
-                stats: [],
-                types: [],
-              }}
-            />
+            <PokemonIndexDetailSkeleton key={index} />
           ))}
         </div>
       </div>
