@@ -19,6 +19,7 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
             <Image
               src={pokemonData.sprites.other.official_artwork.front_default}
               alt={`${pokemonData.name}の画像`}
+              priority
               width={300}
               height={300}
               className="mx-auto"
