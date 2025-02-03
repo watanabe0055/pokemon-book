@@ -1,9 +1,26 @@
 import PokemonSearchDetail from "@/app/components/ModalContainer/pokemonSearchDetail";
 import { fetchPokemonData } from "@/app/lib/fetch";
+import { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+// 動的にメタデータを設定
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const { pokemon } = await getServerPokemonData((await params).slug);
+    return {
+      title: `${pokemon.name} | Pokemon Search`,
+      description: `${pokemon.name} の詳細情報を確認できます。`,
+    };
+  } catch {
+    return {
+      title: "Pokemon Not Found",
+      description: "指定されたポケモンが見つかりませんでした。",
+    };
+  }
+}
 
 async function getServerPokemonData(slug: string) {
   try {

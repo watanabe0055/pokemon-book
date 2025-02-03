@@ -1,6 +1,13 @@
 import { fetchAllPokemonData } from "../../lib/fetch";
 import PokemonIndexPagePart from "../../pageParts/pokemon";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "pokemon List",
+  description: "pokemon list page",
+};
+
 export default async function Home() {
   const getPokemonDataList = await fetchAllPokemonData({ offset: 1 });
 

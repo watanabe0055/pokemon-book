@@ -1,6 +1,12 @@
 import TypeFilter from "@/app/components/typeFilter";
 import { fetchPokemonTypes } from "@/app/lib/fetch/type";
 import FilteredPokemonList from "@/app/pageParts/filteredPokemon";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "pokemon Type Filter",
+  description: "pokemon type filter page",
+};
 
 export default async function Home() {
   const pokemonTypes = await fetchPokemonTypes();
