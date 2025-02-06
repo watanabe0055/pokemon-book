@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { fetchPokemonDateByPickUp } from "../lib/fetch";
+
 import clsx from "clsx";
-import PickUpPokemon from "../components/atoms/PickUpPokemon";
+
 import { Suspense } from "react";
+import { fetchPokemonDateByPickUp } from "@/app/lib/fetch";
+import PickUpPokemon from "@/app/components/atoms/PickUpPokemon";
 
 async function getServerPickUpPokemon() {
   try {
