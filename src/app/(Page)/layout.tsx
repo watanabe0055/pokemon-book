@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-import "./globals.css";
-import Header from "./components/atoms/Header";
-import Footer from "./components/atoms/Footer";
+import "../globals.css";
+import Header from "../components/atoms/Header";
+import Footer from "../components/atoms/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,9 +30,7 @@ export default function RootLayout({
         className={`${inter.className} flex flex-col min-h-screen bg-gray-50`}
       >
         <Header />
-        <main className="container flex-grow px-4 py-8 mx-auto">
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
