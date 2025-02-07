@@ -1,14 +1,21 @@
+type UserInfo = {
+  message: string;
+  isLoginUser: boolean;
+};
+
 /**
  * ユーザー情報の取得
  */
-export const fetchUserProfile = async (accessToken: string) => {
+export const fetchUserProfile = async (
+  accessToken: string
+): Promise<UserInfo> => {
   const baseUrl =
     process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
   const path = `${baseUrl}v1/auth/private/profile`;
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };
-  console.log(accessToken);
+
   try {
     const response = await fetch(path, { headers });
 
