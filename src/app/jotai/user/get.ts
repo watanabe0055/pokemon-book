@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
 /**
- * お気に入りポケモンのidリスト
+ * ユーザーのログイン状態を管理するatom
  */
 export const isLoginUserAtom = atom<boolean>(false);
