@@ -1,3 +1,5 @@
+"use server";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/atoms/Header";
@@ -5,14 +7,17 @@ import Footer from "./components/atoms/Footer";
 
 import { Providers } from "./components/Providers";
 import AuthInitializer from "./components/AuthInitializer";
+import { fetchAuthState } from "./components/AuthInitializer/useModel";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isLoggedIn = await fetchAuthState();
+
   return (
     <html lang="en">
       <head>
@@ -27,7 +32,7 @@ export default function RootLayout({
         className={`${inter.className} flex flex-col min-h-screen bg-gray-50`}
       >
         <Providers>
-          <AuthInitializer />
+          <AuthInitializer isLoggedIn={isLoggedIn} />
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />

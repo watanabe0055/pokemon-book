@@ -3,7 +3,7 @@
 import { fetchUserProfile } from "../../lib/fetch/user";
 import { createClient } from "../../lib/supabase/server";
 
-export async function fetchAuthState() {
+export async function fetchAuthState(): Promise<boolean> {
   const supabase = await createClient();
   const {
     data: { session },
@@ -11,7 +11,7 @@ export async function fetchAuthState() {
   } = await supabase.auth.getSession();
 
   if (authError || !session) {
-    return null;
+    return false;
   }
 
   try {
@@ -19,6 +19,6 @@ export async function fetchAuthState() {
     return profileData.isLoginUser;
   } catch (error) {
     console.error("Error fetching profile:", error);
-    return null;
+    return false;
   }
 }

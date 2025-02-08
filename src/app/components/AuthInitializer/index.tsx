@@ -3,21 +3,19 @@
 import { useSetAtom } from "jotai";
 import { useEffect } from "react";
 import { isLoginUserAtom } from "@/app/jotai/user/get";
-import { fetchAuthState } from "./useModel";
 
-export default function AuthInitializer() {
+type Props = {
+  isLoggedIn: boolean;
+};
+
+export default function AuthInitializer({ isLoggedIn }: Props) {
   const setIsLoginUser = useSetAtom(isLoginUserAtom);
 
   useEffect(() => {
-    const initAuth = async () => {
-      const isLoggedIn = await fetchAuthState();
-      if (isLoggedIn !== null) {
-        setIsLoginUser(isLoggedIn);
-      }
-    };
-
-    initAuth();
-  }, [setIsLoginUser]);
+    if (isLoggedIn !== null) {
+      setIsLoginUser(isLoggedIn);
+    }
+  }, [isLoggedIn]);
 
   return null;
 }
