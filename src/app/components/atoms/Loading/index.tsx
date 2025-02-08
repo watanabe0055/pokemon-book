@@ -3,7 +3,6 @@ import { useModel } from "./useModel";
 
 const Loading = () => {
 	const { skeletons } = useModel();
-	console.log(skeletons);
 
 	return (
 		<>
