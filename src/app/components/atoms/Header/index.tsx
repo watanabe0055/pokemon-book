@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
-import LinkItemList from "../LinkItemList";
 import FooterNavigation from "../FooterNavigation";
 
 export default function Header() {
