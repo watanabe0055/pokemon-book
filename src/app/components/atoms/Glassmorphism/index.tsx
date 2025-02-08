@@ -1,5 +1,4 @@
-import React from "react";
-import { VariantProps, tv } from "tailwind-variants";
+import { type VariantProps, tv } from "tailwind-variants";
 
 const glassmorphism = tv({
 	base: "backdrop-blur-md bg-white/30 rounded-lg shadow-lg",

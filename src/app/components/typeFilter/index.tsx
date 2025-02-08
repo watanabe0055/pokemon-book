@@ -1,10 +1,10 @@
 "use client";
 
-import { ResultsType } from "@/app/type/type";
+import type { ResultsType } from "@/app/type/type";
+import clsx from "clsx";
 import TypeText from "../atoms/typeList/typeText";
 import TypeIconList from "./TypeIconList";
 import useModel from "./useModel";
-import clsx from "clsx";
 
 type pokemonTypesProps = {
 	typeList: ResultsType[];

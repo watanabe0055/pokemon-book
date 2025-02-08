@@ -1,12 +1,12 @@
 "use client";
 
 import useScrollDetection from "@/app/lib/scroll";
-import { useModel } from "./useModel";
 import { Suspense, useEffect } from "react";
 import { lazy } from "react";
+import { useModel } from "./useModel";
 const PokemonIndex = lazy(() => import("@/app/components/pokemonIndex"));
-import { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
 import Loading from "@/app/components/atoms/Loading";
+import type { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
 
 type PokemonIndexPagePartProps = {
 	InitialPokemonData: GetPokemonDataUnionSpeciesListType;
@@ -24,7 +24,7 @@ const PokemonIndexPagePart = ({
 		if (isBottom) {
 			loaderGetPokemon();
 		}
-	}, [isBottom]);
+	}, [isBottom, loaderGetPokemon]);
 
 	return (
 		<>

@@ -1,9 +1,9 @@
 import { convertStatsWord } from "@/app/lib/convert/stats";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 
 import Image from "next/image";
-import TypeList from "../../atoms/typeList";
 import NameAndNo from "../../atoms/PokemonDetail/NameAndNo";
+import TypeList from "../../atoms/typeList";
 
 type PokemonDetailProps = {
 	pokemonData: ConvertPokemonUnionSpeciesType;
@@ -37,7 +37,7 @@ const PokemonDetail = ({ pokemonData }: PokemonDetailProps) => {
 								<div
 									className="h-full bg-blue-500"
 									style={{ width: `${(stat.base_stat / 255) * 100}%` }}
-								></div>
+								/>
 							</div>
 							<span className="ml-2 text-sm font-medium">{stat.base_stat}</span>
 						</div>

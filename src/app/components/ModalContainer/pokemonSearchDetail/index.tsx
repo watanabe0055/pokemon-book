@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { convertStatsWord } from "@/app/lib/convert/stats";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
-import TypeList from "../../atoms/typeList";
-import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
-import { Typography } from "../../atoms/Typography";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
+import Image from "next/image";
 import { Glassmorphism } from "../../atoms/Glassmorphism";
+import { Typography } from "../../atoms/Typography";
+import TypeList from "../../atoms/typeList";
 
 type PokemonDetailProps = {
 	pokemonData: ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType;
@@ -64,7 +64,7 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
 									<div
 										className="h-full bg-gradient-to-r from-purple-500 to-indigo-500"
 										style={{ width: `${(stat.base_stat / 255) * 100}%` }}
-									></div>
+									/>
 								</div>
 							</div>
 						))}
@@ -87,8 +87,6 @@ const PokemonSearchDetail = ({ pokemonData }: PokemonDetailProps) => {
 					{pokemonData.abilities.map((ability) => (
 						<li
 							key={ability.name}
-							tabIndex={0}
-							role="article"
 							aria-label={`${ability.name}の特性`}
 							className="pb-4 border-b border-gray-100 last:border-0 last:pb-0"
 						>

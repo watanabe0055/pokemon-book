@@ -1,7 +1,7 @@
-import Image from "next/image";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import clsx from "clsx";
+import Image from "next/image";
 import TypeList from "../typeList";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 
 export type PokemonIndexDetailProps = {
 	pokemon: ConvertPokemonUnionSpeciesType;
@@ -18,6 +18,7 @@ const PokemonIndexDetail = ({
 	return (
 		<div
 			role="button"
+			tabIndex={0}
 			className={clsx(
 				"flex flex-col items-center p-4 bg-white rounded-lg shadow-md transition-all duration-300",
 				"hover:shadow-xl hover:scale-105",
@@ -26,9 +27,9 @@ const PokemonIndexDetail = ({
 				hoveredPokemon === pokemon.id && "bg-gray-100",
 				"h-full",
 			)}
-			onClick={() => handleModelOpen && handleModelOpen(pokemon)}
-			onMouseEnter={() => setHoveredPokemon && setHoveredPokemon(pokemon.id)}
-			onMouseLeave={() => setHoveredPokemon && setHoveredPokemon(null)}
+			onClick={() => handleModelOpen?.(pokemon)}
+			onMouseEnter={() => setHoveredPokemon?.(pokemon.id)}
+			onMouseLeave={() => setHoveredPokemon?.(null)}
 		>
 			<div className="relative w-32 h-32 mb-4">
 				<Image

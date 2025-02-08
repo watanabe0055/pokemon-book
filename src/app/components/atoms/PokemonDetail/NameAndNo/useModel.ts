@@ -1,5 +1,5 @@
 import { favoritePokemonListAtom } from "@/app/jotai/favorit/get";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { useAtom } from "jotai";
 import { useCallback, useEffect, useState } from "react";
 

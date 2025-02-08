@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import useModel from "./useModel";
-import ModalContainer from "../ModalContainer";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonIndexDetail from "@/app/components/atoms/pokemonIndexDetail";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import { useState } from "react";
+import ModalContainer from "../ModalContainer";
+import useModel from "./useModel";
 
 type PokemonIndexProps = {
 	pokemonData?: Array<ConvertPokemonUnionSpeciesType>;

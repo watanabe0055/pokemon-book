@@ -1,4 +1,4 @@
-import { SvgProps } from "./bug";
+import type { SvgProps } from "./bug";
 
 const DragonSVG: React.FC<SvgProps> = ({ size }) => {
 	return (

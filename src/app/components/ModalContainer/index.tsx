@@ -1,6 +1,6 @@
 import { XCircle } from "lucide-react";
 
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonDetail from "./pokemonDetail";
 
 export type ModalContainerProps = {

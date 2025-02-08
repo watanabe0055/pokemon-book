@@ -1,4 +1,4 @@
-import { TypeName } from "@/app/type/pokemon";
+import type { TypeName } from "@/app/type/pokemon";
 
 const TYPE_MAPPING: Record<string, string> = {
 	normal: "ノーマル",

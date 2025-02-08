@@ -1,5 +1,6 @@
-import React, { JSX } from "react";
-import { VariantProps, tv } from "tailwind-variants";
+import type React from "react";
+import type { JSX } from "react";
+import { type VariantProps, tv } from "tailwind-variants";
 
 const typography = tv({
 	base: "text-foreground",

@@ -1,6 +1,6 @@
 "use client";
 
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 
 import { useCallback, useState } from "react";
 

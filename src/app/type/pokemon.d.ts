@@ -1,4 +1,4 @@
-import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
+import type { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 // 定義: 通常のスプライトの型
 type Sprite = string | null;
 

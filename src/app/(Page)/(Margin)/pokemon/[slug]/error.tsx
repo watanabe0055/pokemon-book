@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function PokemonNotFound() {
 	const [rotation, setRotation] = useState(0);
@@ -18,6 +18,7 @@ export default function PokemonNotFound() {
 		<div className="flex flex-col items-center justify-center min-h-screen text-white bg-gradient-to-b from-red-500 to-yellow-500">
 			<motion.div animate={{ rotate: rotation }} className="mb-8">
 				<svg width="120" height="120" viewBox="0 0 100 100">
+					<title>Pokeball Animation</title>
 					<circle cx="50" cy="50" r="45" fill="white" />
 					<circle cx="50" cy="50" r="20" fill="red" />
 					<rect x="48" y="10" width="4" height="35" fill="black" />

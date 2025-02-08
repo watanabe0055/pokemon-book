@@ -1,4 +1,4 @@
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { atomWithReset } from "jotai/utils";
 
 /**

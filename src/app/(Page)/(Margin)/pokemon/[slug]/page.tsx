@@ -1,6 +1,6 @@
 import PokemonSearchDetail from "@/app/components/ModalContainer/pokemonSearchDetail";
 import { fetchPokemonData } from "@/app/lib/fetch";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 type Props = {
 	params: Promise<{ slug: string }>;

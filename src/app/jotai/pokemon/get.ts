@@ -1,5 +1,5 @@
-import { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
-import { typePokemonList } from "@/app/type/type";
+import type { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
+import type { typePokemonList } from "@/app/type/type";
 import { atom } from "jotai";
 
 export const allGetPokemonAtom = atom<GetPokemonDataUnionSpeciesListType>();
