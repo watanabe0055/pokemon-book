@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import LinkItemList from "../LinkItemList";
+import FooterNavigation from "../FooterNavigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
             Pokémon
           </Link>
           <nav className="hidden space-x-8 md:flex">
-            <LinkItemList />
+            <FooterNavigation />
           </nav>
           <div className="flex items-center space-x-4">
             <Link
@@ -42,9 +43,7 @@ export default function Header() {
       </div>
       {isMenuOpen && (
         <div className="px-4 py-2 bg-white border-t border-gray-200 md:hidden">
-          <nav className="flex flex-col space-y-2">
-            <LinkItemList />
-          </nav>
+          <FooterNavigation isSpView />
         </div>
       )}
     </header>
