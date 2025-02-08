@@ -27,7 +27,7 @@ Pokemon Book は、ポケモンの情報を簡単に検索・閲覧できるモ�
 
 ## 🛠 技術スタック
 
-- **フレームワーク:** Next.js 14
+- **フレームワーク:** Next.js 15
 - **スタイリング:** Tailwind CSS
 - **状態管理:** Jotai
 - **画像最適化:** Next.js Image
