@@ -1,9 +1,9 @@
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <main className="container flex-grow px-4 py-8 mx-auto">{children}</main>
-  );
+	return (
+		<main className="container flex-grow px-4 py-8 mx-auto">{children}</main>
+	);
 }

@@ -1,17 +1,17 @@
 export type SpeciesType = {
-  name: string;
-  language: {
-    name: string;
-    url: string;
-  };
+	name: string;
+	language: {
+		name: string;
+		url: string;
+	};
 };
 export type SpeciesListType = Array<SpeciesType>;
 
 export type PokemonSpecies = {
-  name: string;
-  id: number;
-  is_baby: boolean;
-  is_legendary: boolean;
-  is_mythical: boolean;
-  names: SpeciesListType;
+	name: string;
+	id: number;
+	is_baby: boolean;
+	is_legendary: boolean;
+	is_mythical: boolean;
+	names: SpeciesListType;
 };

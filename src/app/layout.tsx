@@ -12,32 +12,32 @@ import { fetchAuthState } from "./components/AuthInitializer/useModel";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const isLoggedIn = await fetchAuthState();
+	const isLoggedIn = await fetchAuthState();
 
-  return (
-    <html lang="en">
-      <head>
-        <link
-          rel="icon"
-          href="ball.svg"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-      </head>
-      <body
-        className={`${inter.className} flex flex-col min-h-screen bg-gray-50`}
-      >
-        <Providers>
-          <AuthInitializer isLoggedIn={isLoggedIn} />
-          <Header isLogin={isLoggedIn} />
-          <main className="flex-grow">{children}</main>
-          <Footer isLogin={isLoggedIn} />
-        </Providers>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<head>
+				<link
+					rel="icon"
+					href="ball.svg"
+					type="image/<generated>"
+					sizes="<generated>"
+				/>
+			</head>
+			<body
+				className={`${inter.className} flex flex-col min-h-screen bg-gray-50`}
+			>
+				<Providers>
+					<AuthInitializer isLoggedIn={isLoggedIn} />
+					<Header isLogin={isLoggedIn} />
+					<main className="flex-grow">{children}</main>
+					<Footer isLogin={isLoggedIn} />
+				</Providers>
+			</body>
+		</html>
+	);
 }
