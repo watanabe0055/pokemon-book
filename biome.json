@@ -27,7 +27,7 @@
         "useSemanticElements": "off"
       },
       "correctness": {
-        "useExhaustiveDependencies": "info"
+        "useExhaustiveDependencies": "error"
       },
       "style": {
         "useImportType": "warn"
