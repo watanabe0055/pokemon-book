@@ -3,14 +3,15 @@ import { Navigation } from "./variants";
 
 type Props = {
   isSpView?: boolean;
+  isLogin?: boolean;
 };
 
-const FooterNavigation = ({ isSpView }: Props) => {
+const FooterNavigation = ({ isSpView, isLogin = false }: Props) => {
   const className = Navigation({ isSpView });
 
   return (
     <nav className={className}>
-      <LinkItemList />
+      <LinkItemList isLogin={isLogin} />
     </nav>
   );
 };

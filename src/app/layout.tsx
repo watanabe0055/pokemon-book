@@ -33,9 +33,9 @@ export default async function RootLayout({
       >
         <Providers>
           <AuthInitializer isLoggedIn={isLoggedIn} />
-          <Header />
+          <Header isLogin={isLoggedIn} />
           <main className="flex-grow">{children}</main>
-          <Footer />
+          <Footer isLogin={isLoggedIn} />
         </Providers>
       </body>
     </html>
