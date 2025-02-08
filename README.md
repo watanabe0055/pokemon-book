@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokemon Book 🎮
 
-## Getting Started
+## 概要
 
-First, run the development server:
+Pokemon Book は、ポケモンの情報を簡単に検索・閲覧できるモダンな Web アプリケーションです。Next.js 14 を使用し、最新の Web 技術を活用して開発されています。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 主な機能
+
+### 🔍 検索機能
+
+- ポケモン名による検索
+- タイプによるフィルタリング
+
+### 📖 ポケモン図鑑
+
+- 全ポケモンの一覧表示
+- 無限スクロールによるページネーション
+- レスポンシブデザイン対応
+
+### ℹ️ 詳細情報
+
+- 基本情報（名前、図鑑番号）
+- 公式アートワーク
+- タイプ情報
+- ステータス情報（HP、攻撃力など）
+- 特性情報
+
+## 🛠 技術スタック
+
+- **フレームワーク:** Next.js 14
+- **スタイリング:** Tailwind CSS
+- **状態管理:** Jotai
+- **画像最適化:** Next.js Image
+- **アニメーション:** Framer Motion
+
+## 🚀 開始方法
+
+## 🌐 環境変数
+
+```env
+NEXT_PUBLIC_POKEMON_API_HONO=your_api_url
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 ライセンス
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+このプロジェクトは MIT ライセンスの下で公開されています。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🙏 謝辞
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [PokeAPI](https://pokeapi.co/) - ポケモンデータの提供
+- ポケモンは株式会社ポケモン/任天堂の登録商標です。
