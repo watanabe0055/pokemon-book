@@ -1,8 +1,8 @@
 "use client";
 
+import { isLoginUserAtom } from "@/app/jotai/user/get";
 import { useSetAtom } from "jotai";
 import { useEffect } from "react";
-import { isLoginUserAtom } from "@/app/jotai/user/get";
 
 type Props = {
 	isLoggedIn: boolean;
@@ -15,7 +15,7 @@ export default function AuthInitializer({ isLoggedIn }: Props) {
 		if (isLoggedIn !== null) {
 			setIsLoginUser(isLoggedIn);
 		}
-	}, [isLoggedIn]);
+	}, [isLoggedIn, setIsLoginUser]);
 
 	return null;
 }

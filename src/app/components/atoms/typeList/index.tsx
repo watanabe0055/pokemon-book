@@ -1,4 +1,4 @@
-import { Types } from "@/app/type/pokemon";
+import type { Types } from "@/app/type/pokemon";
 import clsx from "clsx";
 import TypeText from "./typeText";
 

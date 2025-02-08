@@ -1,4 +1,4 @@
-import { Stat } from "@/app/type/pokemon";
+import type { Stat } from "@/app/type/pokemon";
 
 export const convertStatsWord = (stats: Stat) => {
 	switch (stats.stat.name) {

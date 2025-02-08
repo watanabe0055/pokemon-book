@@ -1,11 +1,11 @@
 "use client";
 
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import type { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { useState } from "react";
-import { searchPokemon } from "./action";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import PokemonSearchDetail from "../ModalContainer/pokemonSearchDetail";
-import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
 import { Typography } from "../atoms/Typography";
+import { searchPokemon } from "./action";
 
 export default function PokemonSearch() {
 	const [pokemon, setPokemon] = useState<

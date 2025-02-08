@@ -4,9 +4,12 @@ import {
 	selectedTypePokemonListAtom,
 } from "@/app/jotai/pokemon/reset";
 import { fetchPokemonData, fetchPokemonDataByType } from "@/app/lib/fetch";
-import { ConvertPokemonUnionSpeciesType, TypeName } from "@/app/type/pokemon";
-import { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
-import { ResultsType } from "@/app/type/type";
+import type {
+	ConvertPokemonUnionSpeciesType,
+	TypeName,
+} from "@/app/type/pokemon";
+import type { AbilityListHonoResponseType } from "@/app/type/pokemonAbility";
+import type { ResultsType } from "@/app/type/type";
 import { useAtom, useSetAtom } from "jotai";
 import { useResetAtom } from "jotai/utils";
 import { useEffect, useMemo, useState } from "react";

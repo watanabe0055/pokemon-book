@@ -1,8 +1,8 @@
+import { convertTypeWord } from "@/app/lib/convert/types";
+import type { TypeName } from "@/app/type/pokemon";
 import clsx from "clsx";
 import React from "react";
 import { typeCard } from "../../../ModalContainer/pokemonDetail/variants";
-import { convertTypeWord } from "@/app/lib/convert/types";
-import { TypeName } from "@/app/type/pokemon";
 
 type TypeNameProps = {
 	type: TypeName;

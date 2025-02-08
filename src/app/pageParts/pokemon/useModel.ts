@@ -1,8 +1,8 @@
+import type { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
 import { useAtom } from "jotai";
-import { useEffect, useState, useCallback } from "react";
-import { fetchAllPokemonData } from "../../lib/fetch";
+import { useCallback, useEffect, useState } from "react";
 import { allGetPokemonAtom } from "../../jotai/pokemon/get";
-import { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
+import { fetchAllPokemonData } from "../../lib/fetch";
 
 type UseModelProps = {
 	InitialPokemonData: GetPokemonDataUnionSpeciesListType;

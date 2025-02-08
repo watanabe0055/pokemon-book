@@ -1,4 +1,4 @@
-import { LINK_LIST, Link, ROUTES } from "@/app/constants";
+import { LINK_LIST, type Link, ROUTES } from "@/app/constants";
 import NextLink from "next/link";
 
 const filterLinks = (links: Link[], isLoggedIn: boolean): Link[] => {

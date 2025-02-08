@@ -1,4 +1,4 @@
-import {
+import type {
 	GetPokemonDataListType,
 	GetPokemonDataPickUpType,
 	GetPokemonDataType,
@@ -6,8 +6,8 @@ import {
 	GetPokemonDataUnionSpeciesType,
 	GetPokemonDataUnionSpeciesTypeByPickUp,
 } from "../type/pokemon";
-import { SpeciesListType } from "../type/pokemonSpecies";
-import { GetPokemonDataTypeListUnionType } from "../type/type";
+import type { SpeciesListType } from "../type/pokemonSpecies";
+import type { GetPokemonDataTypeListUnionType } from "../type/type";
 
 type fetchPokemonDataProps = {
 	id: string;

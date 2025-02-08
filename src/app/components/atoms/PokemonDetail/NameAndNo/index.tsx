@@ -1,8 +1,8 @@
 import clsx from "clsx";
 
-import HeartSvg from "../../HeartSvg/HeartSvg";
+import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import Link from "next/link";
-import { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
+import HeartSvg from "../../HeartSvg/HeartSvg";
 import useModel from "./useModel";
 
 type NameAndNoProps = {

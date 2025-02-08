@@ -1,4 +1,4 @@
-import { TypeName } from "@/app/type/type";
+import type { TypeName } from "@/app/type/type";
 import BugSVG from "./type/bug";
 import DarkSVG from "./type/dark";
 import DragonSVG from "./type/dragon";
