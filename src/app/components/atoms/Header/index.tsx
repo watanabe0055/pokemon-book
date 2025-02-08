@@ -5,7 +5,11 @@ import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import FooterNavigation from "../FooterNavigation";
 
-export default function Header() {
+type Props = {
+  isLogin?: boolean;
+};
+
+export default function Header({ isLogin = false }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -16,7 +20,7 @@ export default function Header() {
             Pokémon
           </Link>
           <nav className="hidden space-x-8 md:flex">
-            <FooterNavigation />
+            <FooterNavigation isLogin={isLogin} />
           </nav>
           <div className="flex items-center space-x-4">
             <Link
@@ -42,7 +46,7 @@ export default function Header() {
       </div>
       {isMenuOpen && (
         <div className="px-4 py-2 bg-white border-t border-gray-200 md:hidden">
-          <FooterNavigation isSpView />
+          <FooterNavigation isSpView isLogin={isLogin} />
         </div>
       )}
     </header>

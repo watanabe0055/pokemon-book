@@ -1,9 +1,5 @@
-"use client";
-
 import { LINK_LIST, Link, ROUTES } from "@/app/constants";
 import NextLink from "next/link";
-import { useAtomValue } from "jotai";
-import { isLoginUserAtom } from "@/app/jotai/user/get";
 
 const filterLinks = (links: Link[], isLoggedIn: boolean): Link[] => {
   const excludedPath = isLoggedIn ? ROUTES.LOGIN : ROUTES.PRIVATE;
@@ -16,9 +12,11 @@ const NavigationLink = ({ href, text }: Link) => (
   </NextLink>
 );
 
-const LinkItemList = () => {
-  const isLoginUser = useAtomValue(isLoginUserAtom);
-  const filteredLinkList = filterLinks(LINK_LIST, isLoginUser);
+type Props = {
+  isLogin: boolean;
+};
+const LinkItemList = ({ isLogin }: Props) => {
+  const filteredLinkList = filterLinks(LINK_LIST, isLogin);
 
   return (
     <>
