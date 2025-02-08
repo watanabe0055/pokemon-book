@@ -1,7 +1,12 @@
+export type Link = {
+  text: string;
+  href: string;
+};
+
 /**
  * アプリ内のリンクリスト
  */
-export const LINK_LIST = [
+export const LINK_LIST: Array<Link> = [
   {
     text: "Pokémon List",
     href: "/pokemon",
@@ -14,4 +19,17 @@ export const LINK_LIST = [
     text: "Type Filter",
     href: "/pokemon/type",
   },
-];
+  {
+    text: "Login",
+    href: "/login",
+  },
+  {
+    text: "My Page",
+    href: "/private",
+  },
+] as const;
+
+export const ROUTES = {
+  LOGIN: "/login",
+  PRIVATE: "/private",
+} as const;

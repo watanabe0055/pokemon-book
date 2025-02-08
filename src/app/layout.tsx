@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
-import "../globals.css";
-import Header from "../components/atoms/Header";
-import Footer from "../components/atoms/Footer";
+import "./globals.css";
+import Header from "./components/atoms/Header";
+import Footer from "./components/atoms/Footer";
 
-import { Providers } from "../components/Providers";
-import AuthInitializer from "../components/AuthInitializer";
+import { Providers } from "./components/Providers";
+import AuthInitializer from "./components/AuthInitializer";
 
 const inter = Inter({ subsets: ["latin"] });
 
