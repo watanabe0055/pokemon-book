@@ -150,7 +150,7 @@ export const fetchPokemonDateByPickUp =
 			const data: GetPokemonDataPickUpType = await getData.json();
 
 			// pokemonDataを変換し、nameプロパティを設定
-			const pokemonPickupList = data.pokemonData.map((pokemon) => ({
+			const pokemonPickupList = data.data.map((pokemon) => ({
 				...pokemon,
 				name: convertPokemonNameJa(pokemon.names), // 日本語名を設定
 			}));
