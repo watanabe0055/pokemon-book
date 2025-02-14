@@ -107,7 +107,7 @@ type RequestId = string;
 
 export type GetPokemonDataPickUpType = {
 	message: ResponseMessage;
-	pokemonData: Array<ConvertPokemonDataType & AbilityListHonoResponseType>;
+	data: Array<ConvertPokemonDataType & AbilityListHonoResponseType>;
 };
 
 export type GetPokemonDataType = {
