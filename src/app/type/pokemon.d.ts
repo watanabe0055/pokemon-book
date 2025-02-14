@@ -140,7 +140,7 @@ export type GetPokemonDataUnionSpeciesTypeByPickUp = {
  */
 export type GetPokemonDataUnionSpeciesListType = {
 	message: ResponseMessage;
-	pokemonData: Array<ConvertPokemonUnionSpeciesType>;
+	data: Array<ConvertPokemonUnionSpeciesType>;
 };
 
 /**
