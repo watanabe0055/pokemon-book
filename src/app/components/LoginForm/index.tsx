@@ -1,40 +1,10 @@
 "use client";
 
 import { login, signup } from "@/app/components/LoginForm/actions";
-import { type LoginFormData, loginSchema } from "@/app/lib/validation/login";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import type { MouseEvent } from "react";
-import { useForm } from "react-hook-form";
+import clientActions from "./clientActions";
 
 export default function LoginForm() {
-	const [isLoading, setIsLoading] = useState(false);
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<LoginFormData>({
-		resolver: zodResolver(loginSchema),
-	});
-
-	const onSubmit =
-		(action: typeof login | typeof signup) =>
-		async (e: MouseEvent<HTMLButtonElement>) => {
-			e.preventDefault();
-			handleSubmit(async (data) => {
-				setIsLoading(true);
-				try {
-					const formData = new FormData();
-					formData.append("email", data.email);
-					formData.append("password", data.password);
-					await action(formData);
-				} catch (error) {
-					console.error("認証エラー:", error);
-				} finally {
-					setIsLoading(false);
-				}
-			})();
-		};
+	const { isLoading, errors, register, onSubmit } = clientActions();
 
 	return (
 		<form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
