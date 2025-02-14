@@ -1,59 +1,107 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import { type LoginFormData, loginSchema } from "@/app/lib/validation/login";
+import { useState } from "react";
+import type { MouseEvent } from "react";
 import { login, signup } from "./actions";
 
 export default function LoginPage() {
+	const [isLoading, setIsLoading] = useState(false);
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<LoginFormData>({
+		resolver: zodResolver(loginSchema),
+	});
+
+	const onSubmit =
+		(action: typeof login | typeof signup) =>
+		async (e: MouseEvent<HTMLButtonElement>) => {
+			e.preventDefault();
+			handleSubmit(async (data) => {
+				setIsLoading(true);
+				try {
+					const formData = new FormData();
+					formData.append("email", data.email);
+					formData.append("password", data.password);
+					await action(formData);
+				} catch (error) {
+					console.error("認証エラー:", error);
+				} finally {
+					setIsLoading(false);
+				}
+			})();
+		};
+
 	return (
 		<div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
 			<div className="w-full max-w-md p-8 bg-white shadow-md rounded-2xl">
 				<h1 className="mb-6 text-3xl font-semibold text-center text-gray-700">
 					Welcome
 				</h1>
-				<form className="space-y-5">
+				<form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
 					<div>
 						<label
 							htmlFor="email"
 							className="block mb-1 text-sm font-medium text-gray-600"
 						>
-							Email
+							メールアドレス
 						</label>
 						<input
-							id="email"
-							name="email"
+							{...register("email")}
 							type="email"
-							required
-							className="w-full px-3 py-2 text-sm transition duration-150 ease-in-out border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300"
+							className={`w-full px-3 py-2 text-sm transition duration-150 ease-in-out border rounded-md bg-gray-50 focus:outline-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300 ${
+								errors.email ? "border-red-500" : "border-gray-200"
+							}`}
 							placeholder="you@example.com"
 						/>
+						{errors.email && (
+							<p className="mt-1 text-sm text-red-500">
+								{errors.email.message}
+							</p>
+						)}
 					</div>
+
 					<div>
 						<label
 							htmlFor="password"
 							className="block mb-1 text-sm font-medium text-gray-600"
 						>
-							Password
+							パスワード
 						</label>
 						<input
-							id="password"
-							name="password"
+							{...register("password")}
 							type="password"
-							required
-							className="w-full px-3 py-2 text-sm transition duration-150 ease-in-out border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300"
+							className={`w-full px-3 py-2 text-sm transition duration-150 ease-in-out border rounded-md bg-gray-50 focus:outline-none focus:border-blue-300 focus:ring-1 focus:ring-blue-300 ${
+								errors.password ? "border-red-500" : "border-gray-200"
+							}`}
 							placeholder="••••••••"
 						/>
+						{errors.password && (
+							<p className="mt-1 text-sm text-red-500">
+								{errors.password.message}
+							</p>
+						)}
 					</div>
+
 					<div className="flex flex-col space-y-3">
 						<button
 							type="button"
-							formAction={login}
-							className="w-full px-4 py-2 font-medium text-blue-800 transition duration-300 ease-in-out bg-blue-200 rounded-md hover:bg-blue-300"
+							onClick={onSubmit(login)}
+							disabled={isLoading}
+							className="w-full px-4 py-2 font-medium text-blue-800 transition duration-300 ease-in-out bg-blue-200 rounded-md hover:bg-blue-300 disabled:opacity-50"
 						>
-							Log in
+							{isLoading ? "処理中..." : "ログイン"}
 						</button>
 						<button
 							type="button"
-							formAction={signup}
-							className="w-full px-4 py-2 font-medium text-pink-800 transition duration-300 ease-in-out bg-pink-200 rounded-md hover:bg-pink-300"
+							onClick={onSubmit(signup)}
+							disabled={isLoading}
+							className="w-full px-4 py-2 font-medium text-pink-800 transition duration-300 ease-in-out bg-pink-200 rounded-md hover:bg-pink-300 disabled:opacity-50"
 						>
-							Sign up
+							{isLoading ? "処理中..." : "新規登録"}
 						</button>
 					</div>
 				</form>
