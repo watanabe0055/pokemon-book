@@ -5,7 +5,11 @@ import { loginSchema } from "@/app/lib/validation/login";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function login(formData: FormData) {
+// 共通の認証ロジック
+async function handleAuth(
+	formData: FormData,
+	authAction: "login" | "signup",
+): Promise<void> {
 	const supabase = await createClient();
 
 	const data = {
@@ -13,48 +17,33 @@ export async function login(formData: FormData) {
 		password: String(formData.get("password")),
 	};
 
-	// サーバーサイドでもバリデーションを行う
 	const result = loginSchema.safeParse(data);
 	if (!result.success) {
-		redirect("/error");
+		redirect("/error?reason=validation");
 	}
 
-	const { error } = await supabase.auth.signInWithPassword({
-		email: data.email,
-		password: data.password,
-	});
+	const { error } = await (authAction === "login"
+		? supabase.auth.signInWithPassword({
+				email: data.email,
+				password: data.password,
+			})
+		: supabase.auth.signUp({
+				email: data.email,
+				password: data.password,
+			}));
 
 	if (error) {
-		redirect("/error");
+		redirect(`/error?reason=${authAction}&message=${error.message}`);
 	}
 
 	revalidatePath("/", "layout");
 	redirect("/");
 }
 
+export async function login(formData: FormData) {
+	return handleAuth(formData, "login");
+}
+
 export async function signup(formData: FormData) {
-	const supabase = await createClient();
-
-	const data = {
-		email: String(formData.get("email")),
-		password: String(formData.get("password")),
-	};
-
-	// サーバーサイドでもバリデーションを行う
-	const result = loginSchema.safeParse(data);
-	if (!result.success) {
-		redirect("/error");
-	}
-
-	const { error } = await supabase.auth.signUp({
-		email: data.email,
-		password: data.password,
-	});
-
-	if (error) {
-		redirect("/error");
-	}
-
-	revalidatePath("/", "layout");
-	redirect("/");
+	return handleAuth(formData, "signup");
 }
