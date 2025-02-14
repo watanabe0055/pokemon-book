@@ -13,6 +13,7 @@ const clientActions = () => {
 		formState: { errors },
 	} = useForm<LoginFormData>({
 		resolver: zodResolver(loginSchema),
+		mode: "onBlur",
 	});
 
 	const onSubmit =

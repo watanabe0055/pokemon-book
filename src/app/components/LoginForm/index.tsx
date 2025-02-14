@@ -1,6 +1,7 @@
 "use client";
 
 import { login, signup } from "@/app/components/LoginForm/actions";
+import clsx from "clsx";
 import clientActions from "./clientActions";
 
 export default function LoginForm() {
@@ -52,16 +53,22 @@ export default function LoginForm() {
 				<button
 					type="button"
 					onClick={onSubmit(login)}
-					disabled={isLoading}
-					className="w-full px-4 py-2 font-medium text-blue-800 transition duration-300 ease-in-out bg-blue-200 rounded-md hover:bg-blue-300 disabled:opacity-50"
+					disabled={isLoading || !!errors.email || !!errors.password}
+					className={clsx(
+						"w-full px-4 py-2 font-medium text-blue-800 transition duration-300 ease-in-out bg-blue-200 rounded-md hover:bg-blue-300 disabled:opacity-50",
+						"disabled:cursor-not-allowed",
+					)}
 				>
 					{isLoading ? "処理中..." : "ログイン"}
 				</button>
 				<button
 					type="button"
 					onClick={onSubmit(signup)}
-					disabled={isLoading}
-					className="w-full px-4 py-2 font-medium text-pink-800 transition duration-300 ease-in-out bg-pink-200 rounded-md hover:bg-pink-300 disabled:opacity-50"
+					disabled={isLoading || !!errors.email || !!errors.password}
+					className={clsx(
+						"w-full px-4 py-2 font-medium text-pink-800 transition duration-300 ease-in-out bg-pink-200 rounded-md hover:bg-pink-300 disabled:opacity-50",
+						"disabled:cursor-not-allowed",
+					)}
 				>
 					{isLoading ? "処理中..." : "新規登録"}
 				</button>
