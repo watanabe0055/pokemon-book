@@ -1,11 +1,10 @@
 "use server";
 
 import PokemonIndex from "@/app/components/pokemonIndex";
-import { getFavoritePokemon } from "@/app/lib/fetch/favorite";
+import useModel from "./useModel";
 
-const favoritePage = async () => {
-	const pokemon = await getFavoritePokemon();
-
+const FavoritePage = async () => {
+	const { pokemon } = await useModel();
 	return (
 		<>
 			<PokemonIndex pokemonData={pokemon.data} />
@@ -13,4 +12,4 @@ const favoritePage = async () => {
 	);
 };
 
-export default favoritePage;
+export default FavoritePage;
