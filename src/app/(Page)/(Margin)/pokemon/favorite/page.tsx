@@ -5,6 +5,7 @@ import useModel from "./useModel";
 
 const FavoritePage = async () => {
 	const { pokemon } = await useModel();
+
 	return (
 		<>
 			<PokemonIndex pokemonData={pokemon.data} />

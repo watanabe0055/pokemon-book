@@ -33,10 +33,17 @@ export const getFavoritePokemon = async (token: string) => {
 	return data;
 };
 
+type postFavoritePokemonObject = {
+	token: string;
+	pokemonId: number;
+};
 /**
  * ポケモンのお気に入りを追加する
  */
-export const postFavoritePokemon = async (token: string) => {
+export const postFavoritePokemon = async ({
+	token,
+	pokemonId,
+}: postFavoritePokemonObject) => {
 	const url = `${process.env.NEXT_PUBLIC_POKEMON_API_HONO}v1/favorite`;
 
 	const res = await fetch(url, {
@@ -44,7 +51,7 @@ export const postFavoritePokemon = async (token: string) => {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({ pokemon: [1] }),
+		body: JSON.stringify({ pokemonId: pokemonId }),
 	});
 	const data = await res.json();
 	console.log(data);

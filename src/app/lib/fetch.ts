@@ -31,7 +31,7 @@ export const fetchPokemonData = async ({
 			return {
 				id,
 				message: "Failed to fetch data",
-				pokemonData: undefined,
+				data: undefined,
 			};
 		}
 
@@ -42,14 +42,14 @@ export const fetchPokemonData = async ({
 			return {
 				id: data?.id || id,
 				message: data?.message,
-				pokemonData: undefined,
+				data: undefined,
 			};
 		}
 
 		return {
 			id: data.id,
 			message: data.message,
-			pokemonData: {
+			data: {
 				...data.pokemonData,
 				name: convertPokemonNameJa(data.pokemonData.names),
 			},
@@ -59,7 +59,7 @@ export const fetchPokemonData = async ({
 		return {
 			id,
 			message: "An unexpected error occurred",
-			pokemonData: undefined,
+			data: undefined,
 		};
 	}
 };
@@ -86,7 +86,7 @@ export const fetchAllPokemonData = async ({
 		const data: GetPokemonDataListType = await getData.json();
 
 		// pokemonData配列内の各要素に対して処理を行い、namesを変換
-		const updatedPokemonData = data.pokemonData.map((pokemon) => ({
+		const updatedPokemonData = data.data.map((pokemon) => ({
 			...pokemon,
 			name: convertPokemonNameJa(pokemon.names), // namesを変換
 		}));

@@ -119,7 +119,7 @@ export type GetPokemonDataType = {
 export type GetPokemonDataListType = {
 	id: RequestId;
 	message: ResponseMessage;
-	pokemonData: Array<ConvertPokemonDataType>;
+	data: Array<ConvertPokemonDataType>;
 };
 
 export type GetPokemonDataUnionSpeciesType = {
@@ -140,7 +140,7 @@ export type GetPokemonDataUnionSpeciesTypeByPickUp = {
  */
 export type GetPokemonDataUnionSpeciesListType = {
 	message: ResponseMessage;
-	data: Array<ConvertPokemonUnionSpeciesType>;
+	pokemonData: Array<ConvertPokemonUnionSpeciesType>;
 };
 
 /**

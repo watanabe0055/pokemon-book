@@ -1,4 +1,6 @@
 import { favoritePokemonListAtom } from "@/app/jotai/favorit/get";
+import { postFavoritePokemon } from "@/app/lib/fetch/favorite";
+import { getClientUserToken } from "@/app/lib/fetch/user/client";
 import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { useAtom } from "jotai";
 import { useCallback, useEffect, useState } from "react";
@@ -14,7 +16,7 @@ const useModel = ({ pokemonData }: useModelProps) => {
 	);
 
 	const toggleFavorite = useCallback(
-		(id: number) => {
+		async (id: number) => {
 			setIsFlag((prev) => !prev);
 
 			setFavoritePokemonList((prevList) =>
@@ -22,6 +24,16 @@ const useModel = ({ pokemonData }: useModelProps) => {
 					? prevList.filter((favId) => favId !== id)
 					: [...prevList, id],
 			);
+			if (isFlag) {
+				console.log("aaa");
+				const { session } = await getClientUserToken();
+				if (session) {
+					postFavoritePokemon({
+						token: session?.access_token,
+						pokemonId: id,
+					});
+				}
+			}
 		},
 		[setFavoritePokemonList, setIsFlag],
 	);
@@ -29,8 +41,6 @@ const useModel = ({ pokemonData }: useModelProps) => {
 	useEffect(() => {
 		setIsFlag(favoritePokemonList.includes(pokemonData.id));
 	}, [pokemonData]);
-
-	console.log(favoritePokemonList);
 
 	return {
 		isFlag,

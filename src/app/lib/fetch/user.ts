@@ -1,11 +1,11 @@
-import { createClient } from "../supabase/server";
+import { createClient as createServer } from "../supabase/server";
 
 /**
  * userのsessionを取得
  * @returns  session
  */
-export const getUserToken = async () => {
-	const supabase = await createClient();
+export const getServerUserToken = async () => {
+	const supabase = await createServer();
 
 	// ユーザー認証情報の取得
 	const {
@@ -27,7 +27,6 @@ type UserInfo = {
 export const fetchUserProfile = async (
 	accessToken: string,
 ): Promise<UserInfo> => {
-	console.log(accessToken);
 	const baseUrl =
 		process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
 	const path = `${baseUrl}v1/auth/private/profile`;
