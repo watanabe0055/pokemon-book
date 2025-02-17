@@ -136,14 +136,6 @@ export type GetPokemonDataUnionSpeciesTypeByPickUp = {
 };
 
 /**
- * ポケモン一覧を取得した型定義
- */
-export type GetPokemonDataUnionSpeciesListType = {
-	message: ResponseMessage;
-	pokemonData: Array<ConvertPokemonUnionSpeciesType>;
-};
-
-/**
  * ポケモンの名前を取得して、日本語名だけ追加した型定義（フロントエンドでコンバートしたもの）
  */
 export type ConvertPokemonUnionSpeciesType = {
@@ -153,4 +145,22 @@ export type ConvertPokemonUnionSpeciesType = {
 	sprites: SpritesType;
 	stats: StatsType;
 	types: Types;
+};
+
+/**
+ * ポケモン一覧を取得した型定義
+ * TODO: NewGetPokemonDataUnionSpeciesListTypeが正しい
+ */
+export type GetPokemonDataUnionSpeciesListType = {
+	message: ResponseMessage;
+	pokemonData: Array<ConvertPokemonUnionSpeciesType>;
+};
+
+/**
+ * ポケモン一覧を取得した型定義(新しい方)
+ *
+ */
+export type NewGetPokemonDataUnionSpeciesListType = {
+	message: ResponseMessage;
+	data: Array<ConvertPokemonUnionSpeciesType>;
 };

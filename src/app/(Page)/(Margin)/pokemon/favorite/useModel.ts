@@ -3,7 +3,9 @@ import { getServerUserToken } from "@/app/lib/fetch/user";
 
 const useModel = async () => {
 	const { session } = await getServerUserToken();
-	const pokemon = session ? await getFavoritePokemon(session.access_token) : {};
+	const pokemon = session
+		? await getFavoritePokemon(session.access_token)
+		: { message: "", data: [] };
 
 	return { pokemon };
 };
