@@ -1,3 +1,31 @@
+import type { Session } from "@supabase/supabase-js";
+import { createClient as createServer } from "../supabase/server";
+
+type ServerUserTokenResponse = {
+	session: Session | null;
+	error?: Error;
+};
+
+/**
+ * userのsessionを取得
+ * @returns  session
+ */
+export const getServerUserToken =
+	async (): Promise<ServerUserTokenResponse> => {
+		const supabase = await createServer();
+
+		// ユーザー認証情報の取得
+		const {
+			data: { session },
+			error: authError,
+		} = await supabase.auth.getSession();
+
+		if (authError) {
+			return { session: null, error: authError };
+		}
+		return { session, error: undefined };
+	};
+
 type UserInfo = {
 	message: string;
 	isLoginUser: boolean;

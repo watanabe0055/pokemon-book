@@ -1,4 +1,6 @@
 import { favoritePokemonListAtom } from "@/app/jotai/favorit/get";
+import { postFavoritePokemon } from "@/app/lib/fetch/favorite";
+import { getClientUserToken } from "@/app/lib/fetch/user/client";
 import type { ConvertPokemonUnionSpeciesType } from "@/app/type/pokemon";
 import { useAtom } from "jotai";
 import { useCallback, useEffect, useState } from "react";
@@ -14,8 +16,23 @@ const useModel = ({ pokemonData }: useModelProps) => {
 	);
 
 	const toggleFavorite = useCallback(
-		(id: number) => {
-			setIsFlag((prev) => !prev);
+		async (id: number) => {
+			// 現在の状態を取得
+			const willBeFavorite = !isFlag;
+
+			// 状態を更新
+			setIsFlag(willBeFavorite);
+
+			// お気に入りに追加する場合のみAPIを呼び出す
+			if (willBeFavorite) {
+				const { session } = await getClientUserToken();
+				if (session) {
+					await postFavoritePokemon({
+						token: session?.access_token,
+						pokemonId: id,
+					});
+				}
+			}
 
 			setFavoritePokemonList((prevList) =>
 				prevList.includes(id)
@@ -23,14 +40,12 @@ const useModel = ({ pokemonData }: useModelProps) => {
 					: [...prevList, id],
 			);
 		},
-		[setFavoritePokemonList, setIsFlag],
+		[setFavoritePokemonList, isFlag],
 	);
 
 	useEffect(() => {
 		setIsFlag(favoritePokemonList.includes(pokemonData.id));
 	}, [pokemonData]);
-
-	console.log(favoritePokemonList);
 
 	return {
 		isFlag,

@@ -27,9 +27,14 @@ export const LINK_LIST: Array<Link> = [
 		text: "My Page",
 		href: "/private",
 	},
+	{
+		text: "Favorite",
+		href: "/pokemon/favorite",
+	},
 ] as const;
 
 export const ROUTES = {
 	LOGIN: "/login",
 	PRIVATE: "/private",
+	FAVORITE: "/pokemon/favorite",
 } as const;

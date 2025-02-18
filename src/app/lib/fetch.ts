@@ -137,7 +137,7 @@ export const fetchPokemonDateByPickUp =
 	async (): Promise<GetPokemonDataUnionSpeciesTypeByPickUp> => {
 		const baseUrl =
 			process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
-		const path = `${baseUrl}v1/pickup`; // パス修正 ("/"を追加)
+		const path = `${baseUrl}v1/pickup`;
 
 		try {
 			const getData = await fetch(path);
@@ -150,7 +150,7 @@ export const fetchPokemonDateByPickUp =
 			const data: GetPokemonDataPickUpType = await getData.json();
 
 			// pokemonDataを変換し、nameプロパティを設定
-			const pokemonPickupList = data.data.map((pokemon) => ({
+			const pokemonPickupList = data.pokemonData.map((pokemon) => ({
 				...pokemon,
 				name: convertPokemonNameJa(pokemon.names), // 日本語名を設定
 			}));

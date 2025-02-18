@@ -2,12 +2,12 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/atoms/Header";
 import Footer from "./components/atoms/Footer";
+import Header from "./components/atoms/Header";
 
-import { Providers } from "./components/Providers";
 import AuthInitializer from "./components/AuthInitializer";
 import { fetchAuthState } from "./components/AuthInitializer/useModel";
+import { Providers } from "./components/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 

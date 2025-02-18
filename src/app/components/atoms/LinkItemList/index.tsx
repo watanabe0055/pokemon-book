@@ -2,8 +2,11 @@ import { LINK_LIST, type Link, ROUTES } from "@/app/constants";
 import NextLink from "next/link";
 
 const filterLinks = (links: Link[], isLoggedIn: boolean): Link[] => {
-	const excludedPath = isLoggedIn ? ROUTES.LOGIN : ROUTES.PRIVATE;
-	return links.filter((item) => item.href !== excludedPath);
+	const excludedPaths: string[] = isLoggedIn
+		? [ROUTES.LOGIN]
+		: [ROUTES.PRIVATE, ROUTES.FAVORITE];
+
+	return links.filter((item) => !excludedPaths.includes(item.href));
 };
 
 const NavigationLink = ({ href, text }: Link) => (
