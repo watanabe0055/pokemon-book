@@ -56,5 +56,4 @@ export const postFavoritePokemon = async ({
 		body: JSON.stringify({ pokemonId: pokemonId }),
 	});
 	const data = await res.json();
-	console.log(data);
 };

@@ -45,7 +45,7 @@ export const fetchPokemonData = async ({
 				pokemonData: undefined,
 			};
 		}
-		console.log(data);
+
 		return {
 			id: data.id,
 			message: data.message,
