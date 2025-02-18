@@ -31,7 +31,7 @@ export const fetchPokemonData = async ({
 			return {
 				id,
 				message: "Failed to fetch data",
-				data: undefined,
+				pokemonData: undefined,
 			};
 		}
 
@@ -42,14 +42,14 @@ export const fetchPokemonData = async ({
 			return {
 				id: data?.id || id,
 				message: data?.message,
-				data: undefined,
+				pokemonData: undefined,
 			};
 		}
-
+		console.log(data);
 		return {
 			id: data.id,
 			message: data.message,
-			data: {
+			pokemonData: {
 				...data.pokemonData,
 				name: convertPokemonNameJa(data.pokemonData.names),
 			},
@@ -59,7 +59,7 @@ export const fetchPokemonData = async ({
 		return {
 			id,
 			message: "An unexpected error occurred",
-			data: undefined,
+			pokemonData: undefined,
 		};
 	}
 };
@@ -86,7 +86,7 @@ export const fetchAllPokemonData = async ({
 		const data: GetPokemonDataListType = await getData.json();
 
 		// pokemonData配列内の各要素に対して処理を行い、namesを変換
-		const updatedPokemonData = data.data.map((pokemon) => ({
+		const updatedPokemonData = data.pokemonData.map((pokemon) => ({
 			...pokemon,
 			name: convertPokemonNameJa(pokemon.names), // namesを変換
 		}));
@@ -137,7 +137,7 @@ export const fetchPokemonDateByPickUp =
 	async (): Promise<GetPokemonDataUnionSpeciesTypeByPickUp> => {
 		const baseUrl =
 			process.env.NEXT_PUBLIC_POKEMON_API_HONO || "http://localhost:8787";
-		const path = `${baseUrl}v1/pickup`; // パス修正 ("/"を追加)
+		const path = `${baseUrl}v1/pickup`;
 
 		try {
 			const getData = await fetch(path);
@@ -150,7 +150,7 @@ export const fetchPokemonDateByPickUp =
 			const data: GetPokemonDataPickUpType = await getData.json();
 
 			// pokemonDataを変換し、nameプロパティを設定
-			const pokemonPickupList = data.data.map((pokemon) => ({
+			const pokemonPickupList = data.pokemonData.map((pokemon) => ({
 				...pokemon,
 				name: convertPokemonNameJa(pokemon.names), // 日本語名を設定
 			}));

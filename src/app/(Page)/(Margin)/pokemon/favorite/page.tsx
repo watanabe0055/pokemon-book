@@ -8,7 +8,7 @@ const FavoritePage = async () => {
 
 	return (
 		<>
-			<PokemonIndex pokemonData={pokemon.data} />
+			<PokemonIndex pokemonData={pokemon.pokemonData} />
 		</>
 	);
 };

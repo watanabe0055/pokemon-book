@@ -29,12 +29,12 @@ export const LINK_LIST: Array<Link> = [
 	},
 	{
 		text: "Favorite",
-		href: "/favorite",
+		href: "/pokemon/favorite",
 	},
 ] as const;
 
 export const ROUTES = {
 	LOGIN: "/login",
 	PRIVATE: "/private",
-	FAVORITE: "/favorite",
+	FAVORITE: "/pokemon/favorite",
 } as const;

@@ -5,7 +5,7 @@ const useModel = async () => {
 	const { session } = await getServerUserToken();
 	const pokemon = session
 		? await getFavoritePokemon(session.access_token)
-		: { message: "", data: [] };
+		: { message: "", pokemonData: [] };
 
 	return { pokemon };
 };

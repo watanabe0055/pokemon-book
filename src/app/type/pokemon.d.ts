@@ -107,7 +107,7 @@ type RequestId = string;
 
 export type GetPokemonDataPickUpType = {
 	message: ResponseMessage;
-	data: Array<ConvertPokemonDataType & AbilityListHonoResponseType>;
+	pokemonData: Array<ConvertPokemonDataType & AbilityListHonoResponseType>;
 };
 
 export type GetPokemonDataType = {
@@ -119,13 +119,13 @@ export type GetPokemonDataType = {
 export type GetPokemonDataListType = {
 	id: RequestId;
 	message: ResponseMessage;
-	data: Array<ConvertPokemonDataType>;
+	pokemonData: Array<ConvertPokemonDataType>;
 };
 
 export type GetPokemonDataUnionSpeciesType = {
 	id: RequestId;
 	message: ResponseMessage;
-	data?: ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType;
+	pokemonData?: ConvertPokemonUnionSpeciesType & AbilityListHonoResponseType;
 };
 
 export type GetPokemonDataUnionSpeciesTypeByPickUp = {
@@ -154,13 +154,4 @@ export type ConvertPokemonUnionSpeciesType = {
 export type GetPokemonDataUnionSpeciesListType = {
 	message: ResponseMessage;
 	pokemonData: Array<ConvertPokemonUnionSpeciesType>;
-};
-
-/**
- * ポケモン一覧を取得した型定義(新しい方)
- *
- */
-export type NewGetPokemonDataUnionSpeciesListType = {
-	message: ResponseMessage;
-	data: Array<ConvertPokemonUnionSpeciesType>;
 };

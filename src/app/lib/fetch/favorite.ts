@@ -1,14 +1,11 @@
-import type {
-	GetPokemonDataUnionSpeciesListType,
-	NewGetPokemonDataUnionSpeciesListType,
-} from "@/app/type/pokemon";
+import type { GetPokemonDataUnionSpeciesListType } from "@/app/type/pokemon";
 
 /**
  * ポケモンもお気に入り取得
  */
 export const getFavoritePokemon = async (
 	token: string,
-): Promise<NewGetPokemonDataUnionSpeciesListType> => {
+): Promise<GetPokemonDataUnionSpeciesListType> => {
 	const url = `${process.env.NEXT_PUBLIC_POKEMON_API_HONO}v1/favorite`;
 
 	const res = await fetch(url, {
@@ -22,7 +19,7 @@ export const getFavoritePokemon = async (
 		console.error(`Error: ${res.status} - ${res.statusText}`);
 		const text = await res.text(); // レスポンスの内容を確認
 		console.error("Response Text:", text);
-		return { message: "", data: [] };
+		return { message: "", pokemonData: [] };
 	}
 
 	// JSON 形式でなければエラー
@@ -33,7 +30,7 @@ export const getFavoritePokemon = async (
 		throw new Error("Response is not in JSON format");
 	}
 
-	const data = (await res.json()) as NewGetPokemonDataUnionSpeciesListType;
+	const data = (await res.json()) as GetPokemonDataUnionSpeciesListType;
 
 	return data;
 };
